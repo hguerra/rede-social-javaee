@@ -1,7 +1,7 @@
 /*
 color:
-.navbar-blue : #3B5999
-.navbar-blue .dropdown-menu li a: #2A4888
+.navbar-blue : #009688, 3B5999
+.navbar-blue .dropdown-menu li a: #017a6f, 2A4888 -> mais escuro
 */
 
 /* custom template */
@@ -79,7 +79,7 @@ hr {
 
 .navbar-blue {
     border-width: 0;
-    background-color: #3B5999;
+    background-color: #009688;
     color: #ffffff;
     font-family: arial, sans-serif;
     top: 0;
@@ -92,7 +92,7 @@ hr {
 }
 
 .navbar-blue .dropdown-menu li a {
-    color: #2A4888;
+    color: #017a6f;
 }
 
 .navbar-blue .dropdown-menu li > a {
@@ -100,7 +100,7 @@ hr {
 }
 
 .navbar-blue li > a:hover, .navbar-blue li > a:focus, .navbar-blue .open, .navbar-blue .open > a, .navbar-blue .open > a:hover, .navbar-blue .open > a:focus {
-    background-color: #2A4888;
+    background-color: #017a6f;
     color: #fff;
 }
 
@@ -136,7 +136,7 @@ hr {
     display: block;
     padding: 3px;
     background-color: #fff;
-    color: #3B5999;
+    color: #009688;
     height: 28px; /*28*/
     width: 28px; /*28*/
     margin: 9px;
@@ -158,6 +158,15 @@ hr {
     margin: 9px 2px 9px 15px;
     background-size: cover;
     background: url("../img/logo-reversex32.png") no-repeat;
+}
+.logo-img-sidebar {
+    display: block;
+    padding: 3px;
+    height: 128px;
+    width: 128px;
+    margin-top: 50%;
+    background-size: cover;
+    background: url("../img/logo-reversex128.png") no-repeat;
 }
 
 #sidebar-footer {
@@ -186,7 +195,7 @@ h1, h2, h3 {
 }
 
 .btn-primary, .label-primary, .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
-    background-color: #3B5999;
+    background-color: #009688;
     color: #fffffe;
 }
 
@@ -204,12 +213,12 @@ h1, h2, h3 {
 }
 
 .badge {
-    color: #3B5999;
+    color: #009688;
     background-color: #fff;
 }
 
 .badge:hover, .badge-inverse {
-    background-color: #3B5999;
+    background-color: #009688;
     color: #fff;
 }
 
@@ -276,7 +285,7 @@ small.text-muted {
     }
 
     .navbar-blue {
-        background-color: #3B5999;
+        background-color: #009688;
         top: 0;
         width: 100%;
         position: relative;
