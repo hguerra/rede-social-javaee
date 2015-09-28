@@ -234,12 +234,13 @@
                                         <h4>O que você deseja compartilhar?</h4>
 
                                         <div class="form-group" style="padding:14px;">
-                                            <input  ng-model="mensagem" class="form-control"
-                                                      placeholder="Atualize seu status no Twitter">
-                                            <input  ng-model="imagem" class="form-control"
-                                                       placeholder="Atualize seu status no Twitter">
+                                            <input ng-model="mensagem" class="form-control"
+                                                   placeholder="Atualize seu status no Twitter">
+                                            <input ng-model="imagem" class="form-control"
+                                                   placeholder="Atualize seu status no Twitter">
                                         </div>
-                                        <button data-ng-click="newPost()" class="btn btn-primary pull-right"> Tweet</button>
+                                        <button data-ng-click="newPost()" class="btn btn-primary pull-right"> Tweet
+                                        </button>
                                         <ul class="list-inline">
                                             <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
                                             <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
@@ -284,7 +285,12 @@
                                 <div class="panel panel-default">
                                     <div ng-repeat="feed in feeds">
                                         <div class="panel-heading">
-                                            <h4>{{feed.post}}</h4>
+                                            <h4>
+                                                {{feed.post}}
+                                                <button data-ng-click="remove(feed)" class="btn btn-danger btn-sm button-delete"><i
+                                                        class="glyphicon glyphicon-trash"></i>
+                                                </button>
+                                            </h4>
                                         </div>
                                         <div class="panel-body">
                                             {{feed.image}}
@@ -301,10 +307,10 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4>
-                                            <button class="btn btn-danger btn-sm"><i
+                                            Titulo da publicacao
+                                            <button class="btn btn-danger btn-sm button-image-delete"><i
                                                     class="glyphicon glyphicon-trash"></i>
                                             </button>
-                                            Titulo da publicacao
                                         </h4>
 
                                     </div>

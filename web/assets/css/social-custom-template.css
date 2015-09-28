@@ -340,3 +340,19 @@ Imagens
     width: 100px;
     height: 20px;
 }
+
+.button-delete{
+    position: relative;
+    height: 25px;
+    padding: 5px 5px;
+    font-size: 10px;
+    margin-left: 80.5%;
+}
+
+.button-image-delete{
+    position: relative;
+    height: 25px;
+    padding: 5px 5px;
+    font-size: 10px;
+    margin-left: 59%;
+}
