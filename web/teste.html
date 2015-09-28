@@ -24,6 +24,9 @@
     <script src="assets/proj-js/controller-post.js"></script>
     <script src="assets/proj-js/directive-proj-esquerda.js"></script>
     <script src="assets/proj-js/directive-proj-direita.js"></script>
+    <script src="assets/proj-js/directive-proj-footer.js"></script>
+    <script src="assets/proj-js/directive-proj-sidebar.js"></script>
+    <script src="assets/proj-js/directive-proj-navbar.js"></script>
 </head>
 <body ng-app="redeApp" ng-controller="PostController as post">
 <div class="wrapper">
@@ -32,50 +35,7 @@
             <!--
             sidebar
             -->
-            <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
-
-                <ul class="nav">
-                    <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i
-                            class="glyphicon glyphicon-chevron-right"></i></a></li>
-                </ul>
-                <ul class="nav hidden-xs" id="lg-menu">
-                    <li><a href="#"><img src="assets/img/storm-user.jpg"
-                                         class="user-img"><span> {{post.usuario.nome}}</span></a></li>
-                    <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Destaques</a>
-                    </li>
-                    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Stories</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Saved</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
-
-                </ul>
-                <!-- dispositivos pequenos apenas-->
-                <ul class="nav visible-xs" id="xs-menu">
-                    <li><a href="#"><i
-                            class="glyphicon glyphicon glyphicon-user"></i><span> {{post.usuario.nome}}</span></a>
-                    </li>
-                    <li><a href="#featured" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
-                    <li><a href="#stories" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
-                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a></li>
-                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>
-                </ul>
-
-                <!--hashTag assuntos populares-->
-                <div>
-                    <br/>
-                    <span><img src="assets/img/hash.png"> Tags</span>
-
-                    <ul class="nav hidden-xs" id="hashtag">
-                        <br/>
-                        <li><a href="#"> #Uhuu</a></li>
-                        <li><a href="#"> #Uhuu</a></li>
-                        <li><a href="#"> #Uhuu</a></li>
-                    </ul>
-                </div>
-                <!--logo-->
-                <div>
-                    <label class="logo-img-sidebar"></label>
-                </div>
-            </div>
+            <paginasidebar></paginasidebar>
             <!--
             /sidebar
              -->
@@ -85,54 +45,7 @@
                 TOP NAVBAR
                 -->
                 <div class="navbar navbar-blue navbar-static-top">
-                    <div class="navbar-header">
-                        <button class="navbar-toggle" type="button" data-toggle="collapse"
-                                data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a href="" class="navbar-brand logo-img"></a>
-                    </div>
-                    <nav class="collapse navbar-collapse" role="navigation">
-                        <form class="navbar-form navbar-left">
-                            <div class="input-group input-group-sm" style="max-width:360px;">
-                                <input type="text" class="form-control" placeholder="Buscar" name="srch-term"
-                                       id="srch-term">
-
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><i
-                                            class="glyphicon glyphicon-search"></i></button>
-                                </div>
-                            </div>
-                        </form>
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="#"><i class="glyphicon glyphicon-home"></i> Home</a>
-                            </li>
-                            <li>
-                                <a href="#postModal" role="button" data-toggle="modal"><i
-                                        class="glyphicon glyphicon-plus"></i> Post</a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="badge">badge</span></a>
-                            </li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                        class="glyphicon glyphicon-user">&nbsp</i></a> <!-- espaco &nbsp-->
-                                <ul class="dropdown-menu">
-                                    <li><a href="">More</a></li>
-                                    <li><a href="">More</a></li>
-                                    <li><a href="">More</a></li>
-                                    <li><a href="">More</a></li>
-                                    <li><a href="">More</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
+                    <paginanavbar></paginanavbar>
                 </div>
                 <!--
                 /TOP NAVBAR
@@ -144,46 +57,27 @@
                     <div class="full col-sm-9">
                         <!--DIV CONTEUDO PAGINA -->
                         <div class="row">
+                            <!--
+                           COLUNA ESQUERDA
+                           -->
                             <colunaesquerda></colunaesquerda>
+                            <!--
+                           /COLUNA ESQUERDA
+                           -->
+                            <!--
+                            COLUNA DIREITA
+                            -->
                             <colunadireita></colunadireita>
+                            <!--
+                            /COLUNA DIREITA
+                            -->
                             <!--
                             DIV CONTEUDO PAGINA
                             -->
                             <!--
                             Footer
                             -->
-                            <footer class="text-center">
-                                <div class="footer-above">
-                                    <div class="container">
-                                        <div class="footer-col col-md-12">
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <a href="#" class="btn-social btn-outline"><i
-                                                            class="fa fa-fw fa-facebook"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="btn-social btn-outline"><i
-                                                            class="fa fa-fw fa-google-plus"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="btn-social btn-outline"><i
-                                                            class="fa fa-fw fa-twitter"></i></a>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    <div class="footer-below">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    Copyright &copy; Heitor and Isabela, 2015
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </footer>
+                            <paginafooter></paginafooter>
                             <!--
                             /Footer
                             -->

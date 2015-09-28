@@ -30,7 +30,7 @@ app.controller('PostController', function () {
     post.usuario = {
         'id': 123456,
         'nome': 'Heitor',
-        'imagem': 'url'
+        'imagem': 'assets/img/storm-user.jpg'
     };
     /*
      Metodos

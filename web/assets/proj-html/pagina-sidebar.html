@@ -1,0 +1,43 @@
+<div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i
+                class="glyphicon glyphicon-chevron-right"></i></a></li>
+    </ul>
+    <ul class="nav hidden-xs" id="lg-menu">
+        <li><a href="#"><img ng-src="{{post.usuario.imagem}}"
+                             class="user-img"><span> {{post.usuario.nome}}</span></a></li>
+        <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Destaques</a>
+        </li>
+        <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Stories</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Saved</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
+
+    </ul>
+    <!-- dispositivos pequenos apenas-->
+    <ul class="nav visible-xs" id="xs-menu">
+        <li><a href="#"><i
+                class="glyphicon glyphicon glyphicon-user"></i><span> {{post.usuario.nome}}</span></a>
+        </li>
+        <li><a href="#featured" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
+        <li><a href="#stories" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
+        <li><a href="#" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a></li>
+        <li><a href="#" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>
+    </ul>
+
+    <!--hashTag assuntos populares-->
+    <div>
+        <br/>
+        <span><img src="assets/img/hash.png"> Tags</span>
+
+        <ul class="nav hidden-xs" id="hashtag">
+            <br/>
+            <li><a href="#"> #Uhuu</a></li>
+            <li><a href="#"> #Uhuu</a></li>
+            <li><a href="#"> #Uhuu</a></li>
+        </ul>
+    </div>
+    <!--logo-->
+    <div>
+        <label class="logo-img-sidebar"></label>
+    </div>
+</div>
