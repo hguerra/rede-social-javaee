@@ -7,7 +7,7 @@
     angularApp.controller("MainController", function () {
         var vm = this;
         vm.title = 'Heitor';
-        vm.searchInput = '';
+        vm.buscarPost = '';
         vm.shows = [
             {
                 title: 'Game of Thrones',

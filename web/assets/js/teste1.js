@@ -4,26 +4,42 @@
 var app = angular.module('redeApp', []);
 
 app.controller('main', function ($scope) {
-    $scope.user = 'Heitor';
-    // Create the array to hold the list of feeds
+    /*
+     Atributos
+     */
+    $scope.buscarPost = '';
     $scope.feeds = [
         {
-            'post': 'Teste 1',
-            'image': 'url'
+            'titulo': '@Heitor 28/09/2015',
+            'mensagem': 'Ola mundo',
+            'imagem': 'assets/img/bg_4.jpg'
         },
         {
-            'post': 'Teste 2',
-            'image': 'url'
+            'titulo': '@Isabela 28/09/2015',
+            'mensagem': 'Ola mundo',
+            'imagem': 'assets/img/bg_4.jpg'
         },
         {
-            'post': 'Teste 3',
-            'image': 'url'
+            'titulo': '@Alguem 28/09/2015',
+            'mensagem': 'Ola mundo',
+            'imagem': 'assets/img/bg_4.jpg'
         }
     ];
-    // Create the function to push the data into the "feeds" array
+    /*
+     Json usuario
+     */
+    $scope.usuario = {
+        'id': 123456,
+        'nome': 'Heitor',
+        'imagem': 'url'
+    };
+    /*
+     Metodos
+     */
     $scope.newPost = function () {
-        console.log({'post': $scope.mensagem, 'image': $scope.imagem});
-        $scope.feeds.unshift({'post': $scope.mensagem, 'image': $scope.imagem});
+        var newTitulo = '@' +$scope.usuario.nome+' '+'28/09/2015';
+        $scope.feeds.unshift({'titulo':newTitulo, 'mensagem': $scope.mensagem, 'imagem': $scope.imagem});
+        $scope.titulo = '';
         $scope.mensagem = '';
         $scope.imagem = '';
     };
@@ -31,7 +47,9 @@ app.controller('main', function ($scope) {
         var index = $scope.feeds.indexOf(feed)
         $scope.feeds.splice(index, 1);
     }
+
 });
+
 
 
 

@@ -37,7 +37,7 @@
                 </ul>
                 <ul class="nav hidden-xs" id="lg-menu">
                     <li><a href="#"><img src="assets/img/storm-user.jpg"
-                                         class="user-img"><span> {{user}}</span></a></li>
+                                         class="user-img"><span> {{usuario.nome}}</span></a></li>
                     <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Destaques</a>
                     </li>
                     <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Stories</a></li>
@@ -47,7 +47,7 @@
                 </ul>
                 <!-- dispositivos pequenos apenas-->
                 <ul class="nav visible-xs" id="xs-menu">
-                    <li><a href="#"><i class="glyphicon glyphicon glyphicon-user"></i><span> {{user}}</span></a>
+                    <li><a href="#"><i class="glyphicon glyphicon glyphicon-user"></i><span> {{usuario.nome}}</span></a>
                     </li>
                     <li><a href="#featured" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
                     <li><a href="#stories" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
@@ -256,186 +256,155 @@
                             COLUNA DIREITA
                             -->
                             <div class="col-sm-7">
-                                <!--
                                 <div class="well">
                                     <form class="form">
                                         <h4>Buscar post</h4>
 
                                         <div class="input-group text-center">
                                             <input type="text" class="form-control input-lg"
-                                                   placeholder="Digite o título do post.." ng-model="main.searchInput">
+                                                   placeholder="Digite o título do post.." ng-model="buscarPost">
                                             <span class="input-group-btn"><button class="btn btn-lg btn-primary"
                                                                                   type="button">OK
                                             </button></span>
                                         </div>
                                     </form>
                                 </div>
-                                  -->
                                 <!--
                                 Colocar em loop
                                 -->
                                 <!--ordenar os post-->
-                                <!--
-                                <div>
-                                    <select class="form-control pull-right" ng-model="main.order"
-                                            ng-options="order as order.title for order in main.orders"></select>
-                                    <br/> <br/>
-                                </div>
-                                -->
                                 <div class="panel panel-default">
-                                    <div ng-repeat="feed in feeds">
+                                    <div ng-repeat="feed in feeds | filter: buscarPost">
                                         <div class="panel-heading">
                                             <h4>
-                                                {{feed.post}}
-                                                <button data-ng-click="remove(feed)" class="btn btn-danger btn-sm button-delete"><i
+                                                {{feed.titulo}}
+                                                <button data-ng-click="remove(feed)"
+                                                        class="btn btn-danger btn-sm button-delete"><i
                                                         class="glyphicon glyphicon-trash"></i>
                                                 </button>
                                             </h4>
+                                            <div class="clearfix"></div>
                                         </div>
                                         <div class="panel-body">
-                                            {{feed.image}}
+                                            {{feed.mensagem}} <br/><br/>
+
+                                            <div class="panel-thumbnail">
+                                                <img ng-src="{{feed.imagem}}" class="img-responsive">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <!--
-                                Colocar em loop
-                                -->
-                                <!--
-                                Post com imagem
-                                -->
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4>
-                                            Titulo da publicacao
-                                            <button class="btn btn-danger btn-sm button-image-delete"><i
-                                                    class="glyphicon glyphicon-trash"></i>
-                                            </button>
-                                        </h4>
-
-                                    </div>
-                                    <div class="panel-thumbnail"><img src="assets/img/bg_4.jpg"
-                                                                      class="img-responsive"></div>
-
-                                    <div class="panel-body">
-                                        Escrever algo
-
-                                    </div>
+                                    <div class="clearfix"></div>
+                                    <!--
+                                    Colocar em loop
+                                    -->
                                 </div>
                                 <!--
-                               Post com imagem
-                               -->
-
+                                /COLUNA DIREITA
+                                -->
                             </div>
                             <!--
-                            /COLUNA DIREITA
+                            DIV CONTEUDO PAGINA
                             -->
-                        </div>
-                        <!--
-                        DIV CONTEUDO PAGINA
-                        -->
-                        <!--
-                        Footer
-                        -->
-                        <footer class="text-center">
-                            <div class="footer-above">
-                                <div class="container">
-                                    <div class="footer-col col-md-12">
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="#" class="btn-social btn-outline"><i
-                                                        class="fa fa-fw fa-facebook"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="btn-social btn-outline"><i
-                                                        class="fa fa-fw fa-google-plus"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="btn-social btn-outline"><i
-                                                        class="fa fa-fw fa-twitter"></i></a>
-                                            </li>
-                                        </ul>
-
-                                    </div>
-                                </div>
-                                <div class="footer-below">
+                            <!--
+                            Footer
+                            -->
+                            <footer class="text-center">
+                                <div class="footer-above">
                                     <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                Copyright &copy; Heitor and Isabela, 2015
+                                        <div class="footer-col col-md-12">
+                                            <ul class="list-inline">
+                                                <li>
+                                                    <a href="#" class="btn-social btn-outline"><i
+                                                            class="fa fa-fw fa-facebook"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="btn-social btn-outline"><i
+                                                            class="fa fa-fw fa-google-plus"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="btn-social btn-outline"><i
+                                                            class="fa fa-fw fa-twitter"></i></a>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <div class="footer-below">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    Copyright &copy; Heitor and Isabela, 2015
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </footer>
-                        <!--
-                        /Footer
-                        -->
+                            </footer>
+                            <!--
+                            /Footer
+                            -->
+                        </div>
                     </div>
                 </div>
+                <!--
+                /CONTEUDO PRINCIPAL
+                -->
             </div>
-            <!--
-            /CONTEUDO PRINCIPAL
-            -->
         </div>
     </div>
-</div>
-<!--
-JANELA SO APARECE AO PRESSIONADA
-<!--
-POST
--->
-<div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                Status
-            </div>
-            <div class="modal-body">
-                <form class="form center-block">
-                    <div class="form-group">
+    <!--
+    JANELA SO APARECE AO PRESSIONADA
+    <!--
+    POST
+    -->
+    <div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    Status
+                </div>
+                <div class="modal-body">
+                    <form class="form center-block">
+                        <div class="form-group">
                         <textarea class="form-control input-lg" autofocus=""
                                   placeholder="O que você está pensando?" id="textarea-post-mensagem"
                                   name="textarea-post-mensagem" ng-model="mensagem"></textarea>
-                    </div>
-                    <!--
-                    url
-                    -->
-                    <div id="url-imagem" class="collapse">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <input type="text" class="form-control input-lg" autofocus=""
-                                       placeholder="Digite a url da imagem" id="input-post-url"
-                                       name="textarea-post-mensagem" ng-model="imagem">
+                        </div>
+                        <!--
+                        url
+                        -->
+                        <div id="url-imagem" class="collapse">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-lg" autofocus=""
+                                           placeholder="Digite a url da imagem" id="input-post-url"
+                                           name="textarea-post-mensagem" ng-model="imagem">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!--
-                     url
-                     -->
-                    <div class="modal-footer">
-                        <div>
-                            <button data-ng-click="newPost()" class="btn btn-primary btn-sm" data-dismiss="modal"
-                                    aria-hidden="true">Post
-                            </button>
-                            <ul class="pull-left list-inline">
-                                <li><a data-toggle="collapse" href="#url-imagem"><i
-                                        class="glyphicon glyphicon-upload"></i></a>
-                                </li>
-                                <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
-                                <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
-                            </ul>
+                        <!--
+                         url
+                         -->
+                        <div class="modal-footer">
+                            <div>
+                                <button data-ng-click="newPost()" class="btn btn-primary btn-sm" data-dismiss="modal"
+                                        aria-hidden="true">Post
+                                </button>
+                                <ul class="pull-left list-inline">
+                                    <li><a data-toggle="collapse" href="#url-imagem"><i
+                                            class="glyphicon glyphicon-upload"></i></a>
+                                    </li>
+                                    <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
+                                    <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<!--
-/POST
--->
 </body>
 </html>
