@@ -1,8 +1,6 @@
 /**
  * Created by heitor on 28/09/15.
  */
-var app = angular.module(angularModule);
-
 app.controller('PostController', function () {
     var post = this;
     /*
@@ -49,6 +47,9 @@ app.controller('PostController', function () {
         post.feeds.splice(index, 1);
     }
 });
+
+
+
 
 
 
