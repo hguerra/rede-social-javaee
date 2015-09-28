@@ -1,73 +1,55 @@
 /**
- * Created by heitor on 26/09/15.
+ * Created by heitor on 28/09/15.
  */
-(function () {
-    var angularApp = angular.module('app', []);
+var app = angular.module(angularModule);
 
-    angularApp.controller("MainController", function () {
-        var vm = this;
-        vm.title = 'Heitor';
-        vm.buscarPost = '';
-        vm.shows = [
-            {
-                title: 'Game of Thrones',
-                year: 2011,
-                favorite: true
-            },
-            {
-                title: 'Walking Dead',
-                year: 2010,
-                favorite: false
-            },
-            {
-                title: 'Firefly',
-                year: 2002,
-                favorite: true
-            },
-            {
-                title: 'Banshee',
-                year: 2013,
-                favorite: true
-            },
-            {
-                title: 'Greys Anatomy',
-                year: 2005,
-                favorite: false
-            }
-        ];
-        vm.orders = [
-            {
-                id: 1,
-                title: 'Year Ascending',
-                key: 'year',
-                reverse: false
-            },
-            {
-                id: 2,
-                title: 'Year Descending',
-                key: 'year',
-                reverse: true
-            },
-            {
-                id: 3,
-                title: 'Title Ascending',
-                key: 'title',
-                reverse: false
-            },
-            {
-                id: 4,
-                title: 'Title Descending',
-                key: 'title',
-                reverse: true
-            }
-        ];
-        vm.new = {};
-        vm.order = vm.orders[0];
-        vm.addShow = function () {
-            console.log(vm.new);
-            vm.shows.unshift(vm.new);
-            vm.new = {};
-        };
-    });
+app.controller('PostController', function () {
+    var post = this;
+    /*
+     Atributos
+     */
+    post.buscarPost = '';
+    post.feeds = [
+        {
+            'titulo': '@Heitor 28/09/2015',
+            'mensagem': 'Ola mundo',
+            'imagem': 'assets/img/bg_4.jpg'
+        },
+        {
+            'titulo': '@Isabela 28/09/2015',
+            'mensagem': 'Ola mundo',
+            'imagem': 'assets/img/bg_4.jpg'
+        },
+        {
+            'titulo': '@Alguem 28/09/2015',
+            'mensagem': 'Ola mundo',
+            'imagem': 'assets/img/bg_4.jpg'
+        }
+    ];
+    /*
+     Json usuario
+     */
+    post.usuario = {
+        'id': 123456,
+        'nome': 'Heitor',
+        'imagem': 'url'
+    };
+    /*
+     Metodos
+     */
+    post.newPost = function () {
+        var newTitulo = '@' + post.usuario.nome + ' ' + '28/09/2015';
+        post.feeds.unshift({'titulo': newTitulo, 'mensagem': post.mensagem, 'imagem': post.imagem});
+        post.titulo = '';
+        post.mensagem = '';
+        post.imagem = '';
+    };
+    post.remove = function (feed) {
+        var index = post.feeds.indexOf(feed)
+        post.feeds.splice(index, 1);
+    }
+});
 
-})();
+
+
+
