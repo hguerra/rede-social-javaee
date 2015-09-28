@@ -64,11 +64,10 @@
         vm.new = {};
         vm.order = vm.orders[0];
         vm.addShow = function () {
-            vm.shows.push(vm.new);
+            console.log(vm.new);
+            vm.shows.unshift(vm.new);
             vm.new = {};
         };
-        /*bug pra add*/
-       //vm.shows.push(vm.new);
     });
 
 })();

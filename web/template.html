@@ -383,7 +383,7 @@ POST
                 Status
             </div>
             <div class="modal-body">
-                <form class="form center-block" ng-submit="main.addShow()">
+                <form class="form center-block">
                     <div class="form-group">
                         <textarea class="form-control input-lg" autofocus=""
                                   placeholder="O que você está pensando?" id="textarea-post-mensagem"
@@ -406,7 +406,7 @@ POST
                     -->
                     <div class="modal-footer">
                         <div>
-                            <button type="submit" class="btn btn-primary btn-sm" data-dismiss="modal"
+                            <button data-ng-click= "main.addShow()" class="btn btn-primary btn-sm" data-dismiss="modal"
                                     aria-hidden="true">Post
                             </button>
                             <ul class="pull-left list-inline">
