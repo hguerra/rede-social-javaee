@@ -68,7 +68,7 @@
             vm.new = {};
         };
         /*bug pra add*/
-        vm.shows.push(vm.new);
+       //vm.shows.push(vm.new);
     });
 
 })();
