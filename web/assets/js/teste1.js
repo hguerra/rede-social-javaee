@@ -1,14 +1,15 @@
 /**
  * Created by heitor on 28/09/15.
  */
-var app = angular.module('redeApp', []);
+var app = angular.module(angularModule);
 
-app.controller('main', function ($scope) {
+app.controller('PostController', function () {
+    var post = this;
     /*
      Atributos
      */
-    $scope.buscarPost = '';
-    $scope.feeds = [
+    post.buscarPost = '';
+    post.feeds = [
         {
             'titulo': '@Heitor 28/09/2015',
             'mensagem': 'Ola mundo',
@@ -28,7 +29,7 @@ app.controller('main', function ($scope) {
     /*
      Json usuario
      */
-    $scope.usuario = {
+    post.usuario = {
         'id': 123456,
         'nome': 'Heitor',
         'imagem': 'url'
@@ -36,18 +37,17 @@ app.controller('main', function ($scope) {
     /*
      Metodos
      */
-    $scope.newPost = function () {
-        var newTitulo = '@' +$scope.usuario.nome+' '+'28/09/2015';
-        $scope.feeds.unshift({'titulo':newTitulo, 'mensagem': $scope.mensagem, 'imagem': $scope.imagem});
-        $scope.titulo = '';
-        $scope.mensagem = '';
-        $scope.imagem = '';
+    post.newPost = function () {
+        var newTitulo = '@' + post.usuario.nome + ' ' + '28/09/2015';
+        post.feeds.unshift({'titulo': newTitulo, 'mensagem': post.mensagem, 'imagem': post.imagem});
+        post.titulo = '';
+        post.mensagem = '';
+        post.imagem = '';
     };
-    $scope.remove = function (feed) {
-        var index = $scope.feeds.indexOf(feed)
-        $scope.feeds.splice(index, 1);
+    post.remove = function (feed) {
+        var index = post.feeds.indexOf(feed)
+        post.feeds.splice(index, 1);
     }
-
 });
 
 

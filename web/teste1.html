@@ -20,9 +20,10 @@
     <!--END FRAMEWORKS-->
     <!--REDE-SOCIAL-SCRIPTS-->
     <script src="assets/js/social-sidebar-toggle.js"></script>
+    <script src="assets/js/rede-social-angular.js"></script>
     <script src="assets/js/teste1.js"></script>
 </head>
-<body ng-app="redeApp" ng-controller="main">
+<body ng-app="redeApp" ng-controller="PostController as post">
 <div class="wrapper">
     <div class="box">
         <div class="row row-offcanvas row-offcanvas-left">
@@ -37,7 +38,7 @@
                 </ul>
                 <ul class="nav hidden-xs" id="lg-menu">
                     <li><a href="#"><img src="assets/img/storm-user.jpg"
-                                         class="user-img"><span> {{usuario.nome}}</span></a></li>
+                                         class="user-img"><span> {{post.usuario.nome}}</span></a></li>
                     <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Destaques</a>
                     </li>
                     <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Stories</a></li>
@@ -47,7 +48,7 @@
                 </ul>
                 <!-- dispositivos pequenos apenas-->
                 <ul class="nav visible-xs" id="xs-menu">
-                    <li><a href="#"><i class="glyphicon glyphicon glyphicon-user"></i><span> {{usuario.nome}}</span></a>
+                    <li><a href="#"><i class="glyphicon glyphicon glyphicon-user"></i><span> {{post.usuario.nome}}</span></a>
                     </li>
                     <li><a href="#featured" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
                     <li><a href="#stories" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
@@ -234,13 +235,10 @@
                                         <h4>O que você deseja compartilhar?</h4>
 
                                         <div class="form-group" style="padding:14px;">
-                                            <input ng-model="mensagem" class="form-control"
-                                                   placeholder="Atualize seu status no Twitter">
-                                            <input ng-model="imagem" class="form-control"
-                                                   placeholder="Atualize seu status no Twitter">
+                                            <textarea class="form-control"
+                                                      placeholder="Atualize seu status no Twitter"></textarea>
                                         </div>
-                                        <button data-ng-click="newPost()" class="btn btn-primary pull-right"> Tweet
-                                        </button>
+                                        <button class="btn btn-primary pull-right" type="button"> Tweet</button>
                                         <ul class="list-inline">
                                             <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
                                             <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
@@ -262,7 +260,7 @@
 
                                         <div class="input-group text-center">
                                             <input type="text" class="form-control input-lg"
-                                                   placeholder="Digite o título do post.." ng-model="buscarPost">
+                                                   placeholder="Digite o título do post.." ng-model="post.buscarPost">
                                             <span class="input-group-btn"><button class="btn btn-lg btn-primary"
                                                                                   type="button">OK
                                             </button></span>
@@ -274,11 +272,11 @@
                                 -->
                                 <!--ordenar os post-->
                                 <div class="panel panel-default">
-                                    <div ng-repeat="feed in feeds | filter: buscarPost">
+                                    <div ng-repeat="feed in post.feeds | filter: post.buscarPost">
                                         <div class="panel-heading">
                                             <h4>
                                                 {{feed.titulo}}
-                                                <button data-ng-click="remove(feed)"
+                                                <button data-ng-click="post.remove(feed)"
                                                         class="btn btn-danger btn-sm button-delete"><i
                                                         class="glyphicon glyphicon-trash"></i>
                                                 </button>
@@ -369,7 +367,7 @@
                         <div class="form-group">
                         <textarea class="form-control input-lg" autofocus=""
                                   placeholder="O que você está pensando?" id="textarea-post-mensagem"
-                                  name="textarea-post-mensagem" ng-model="mensagem"></textarea>
+                                  name="textarea-post-mensagem" ng-model="post.mensagem"></textarea>
                         </div>
                         <!--
                         url
@@ -379,7 +377,7 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control input-lg" autofocus=""
                                            placeholder="Digite a url da imagem" id="input-post-url"
-                                           name="textarea-post-mensagem" ng-model="imagem">
+                                           name="textarea-post-mensagem" ng-model="post.imagem">
                                 </div>
                             </div>
                         </div>
@@ -388,7 +386,7 @@
                          -->
                         <div class="modal-footer">
                             <div>
-                                <button data-ng-click="newPost()" class="btn btn-primary btn-sm" data-dismiss="modal"
+                                <button data-ng-click="post.newPost()" class="btn btn-primary btn-sm" data-dismiss="modal"
                                         aria-hidden="true">Post
                                 </button>
                                 <ul class="pull-left list-inline">
