@@ -22,6 +22,8 @@
     <script src="assets/js/social-sidebar-toggle.js"></script>
     <script src="assets/proj-js/angular-app.js"></script>
     <script src="assets/proj-js/controller-post.js"></script>
+    <script src="assets/proj-js/directive-proj-esquerda.js"></script>
+    <script src="assets/proj-js/directive-proj-direita.js"></script>
 </head>
 <body ng-app="redeApp" ng-controller="PostController as post">
 <div class="wrapper">
@@ -48,7 +50,8 @@
                 </ul>
                 <!-- dispositivos pequenos apenas-->
                 <ul class="nav visible-xs" id="xs-menu">
-                    <li><a href="#"><i class="glyphicon glyphicon glyphicon-user"></i><span> {{post.usuario.nome}}</span></a>
+                    <li><a href="#"><i
+                            class="glyphicon glyphicon glyphicon-user"></i><span> {{post.usuario.nome}}</span></a>
                     </li>
                     <li><a href="#featured" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
                     <li><a href="#stories" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
@@ -141,165 +144,8 @@
                     <div class="full col-sm-9">
                         <!--DIV CONTEUDO PAGINA -->
                         <div class="row">
-                            <!--
-                            COLUNA ESQUERDA
-                            -->
-                            <div class="col-sm-5">
-                                <!--facebook timeline-->
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><img src="assets/img/facebook-logo.png"
-                                                                    class="social-facebook-img"></div>
-                                    <div class="panel-body">
-                                        <div class="panel-group" id="facebook-timeline">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <a class="panel-title" data-toggle="collapse"
-                                                       data-parent="#facebook-timeline" href="#facebook-timeline-1">
-                                                        Heitor</a>
-                                                </div>
-                                                <div id="facebook-timeline-1" class="panel-collapse collapse in">
-                                                    <div class="panel-body">
-                                                        Ola mundo ...
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <a class="panel-title" data-toggle="collapse"
-                                                       data-parent="#facebook-timeline" href="#facebook-timeline-2">
-                                                        Isabela</a>
-                                                </div>
-                                                <div id="facebook-timeline-2" class="panel-collapse collapse">
-                                                    <div class="panel-body">
-                                                        Ola mundo ...
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--facebook post-->
-                                <div class="well">
-                                    <form class="form-horizontal" role="form">
-                                        <h4>O que você deseja compartilhar?</h4>
-
-                                        <div class="form-group" style="padding:14px;">
-                                            <textarea class="form-control"
-                                                      placeholder="Atualize seu status no Facebook"></textarea>
-                                        </div>
-                                        <button class="btn btn-primary pull-right" type="button">Post</button>
-                                        <ul class="list-inline">
-                                            <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
-                                            <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
-                                            <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
-                                        </ul>
-                                    </form>
-                                </div>
-
-                                <!--twitter timeline-->
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><img src="assets/img/twitter-logo.png"
-                                                                    class="social-twitter-img"></div>
-                                    <div class="panel-body">
-                                        <div class="panel-group" id="twitter-timeline">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <a class="panel-title" data-toggle="collapse"
-                                                       data-parent="#twitter-timeline" href="#twitter-timeline-1">
-                                                        Heitor</a>
-                                                </div>
-                                                <div id="twitter-timeline-1" class="panel-collapse collapse in">
-                                                    <div class="panel-body">
-                                                        Ola mundo ...
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <a class="panel-title" data-toggle="collapse"
-                                                       data-parent="#twitter-timeline" href="#twitter-timeline-2">
-                                                        Isabela</a>
-                                                </div>
-                                                <div id="twitter-timeline-2" class="panel-collapse collapse">
-                                                    <div class="panel-body">
-                                                        Ola mundo ...
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--tweet-->
-                                <div class="well">
-                                    <form class="form-horizontal" role="form">
-                                        <h4>O que você deseja compartilhar?</h4>
-
-                                        <div class="form-group" style="padding:14px;">
-                                            <textarea class="form-control"
-                                                      placeholder="Atualize seu status no Twitter"></textarea>
-                                        </div>
-                                        <button class="btn btn-primary pull-right" type="button"> Tweet</button>
-                                        <ul class="list-inline">
-                                            <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
-                                            <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
-                                            <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
-                                        </ul>
-                                    </form>
-                                </div>
-                            </div>
-                            <!--
-                            /COLUNA ESQUERDA
-                            -->
-                            <!--
-                            COLUNA DIREITA
-                            -->
-                            <div class="col-sm-7">
-                                <div class="well">
-                                    <form class="form">
-                                        <h4>Buscar post</h4>
-
-                                        <div class="input-group text-center">
-                                            <input type="text" class="form-control input-lg"
-                                                   placeholder="Digite o título do post.." ng-model="post.buscarPost">
-                                            <span class="input-group-btn"><button class="btn btn-lg btn-primary"
-                                                                                  type="button">OK
-                                            </button></span>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!--
-                                Colocar em loop
-                                -->
-                                <!--ordenar os post-->
-                                <div class="panel panel-default">
-                                    <div ng-repeat="feed in post.feeds | filter: post.buscarPost">
-                                        <div class="panel-heading">
-                                            <h4>
-                                                {{feed.titulo}}
-                                                <button data-ng-click="post.remove(feed)"
-                                                        class="btn btn-danger btn-sm button-delete"><i
-                                                        class="glyphicon glyphicon-trash"></i>
-                                                </button>
-                                            </h4>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="panel-body">
-                                            {{feed.mensagem}} <br/><br/>
-
-                                            <div class="panel-thumbnail">
-                                                <img ng-src="{{feed.imagem}}" class="img-responsive">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <!--
-                                    Colocar em loop
-                                    -->
-                                </div>
-                                <!--
-                                /COLUNA DIREITA
-                                -->
-                            </div>
+                            <colunaesquerda></colunaesquerda>
+                            <colunadireita></colunadireita>
                             <!--
                             DIV CONTEUDO PAGINA
                             -->
@@ -386,7 +232,8 @@
                          -->
                         <div class="modal-footer">
                             <div>
-                                <button data-ng-click="post.newPost()" class="btn btn-primary btn-sm" data-dismiss="modal"
+                                <button data-ng-click="post.newPost()" class="btn btn-primary btn-sm"
+                                        data-dismiss="modal"
                                         aria-hidden="true">Post
                                 </button>
                                 <ul class="pull-left list-inline">

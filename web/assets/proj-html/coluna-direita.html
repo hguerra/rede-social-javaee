@@ -1,0 +1,49 @@
+<!--
+COLUNA DIREITA
+-->
+<div class="col-sm-7">
+    <div class="well">
+        <form class="form">
+            <h4>Buscar post</h4>
+
+            <div class="input-group text-center">
+                <input type="text" class="form-control input-lg"
+                       placeholder="Digite o título do post.." ng-model="post.buscarPost"><span class="input-group-btn"><button
+                    class="btn btn-lg btn-primary" type="button">OK
+            </button></span>
+            </div>
+        </form>
+    </div>
+    <!--
+    Colocar em loop
+    -->
+    <!--ordenar os post-->
+    <div class="panel panel-default">
+        <div ng-repeat="feed in post.feeds | filter: post.buscarPost">
+            <div class="panel-heading">
+                <h4>
+                    {{feed.titulo}}
+                    <button data-ng-click="post.remove(feed)"
+                            class="btn btn-danger btn-sm button-delete"><i
+                            class="glyphicon glyphicon-trash"></i>
+                    </button>
+                </h4>
+                <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+                {{feed.mensagem}} <br/><br/>
+
+                <div class="panel-thumbnail">
+                    <img ng-src="{{feed.imagem}}" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <!--
+        Colocar em loop
+        -->
+    </div>
+</div>
+<!--
+/COLUNA DIREITA
+-->
