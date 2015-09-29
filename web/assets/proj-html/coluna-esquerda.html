@@ -6,32 +6,10 @@ COLUNA ESQUERDA
     <div class="panel panel-default">
         <div class="panel-heading"><img src="assets/img/facebook-logo.png"
                                         class="social-facebook-img"></div>
-        <div class="panel-body">
-            <div class="panel-group" id="facebook-timeline">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a class="panel-title" data-toggle="collapse"
-                           data-parent="#facebook-timeline" href="#facebook-timeline-1">
-                            Heitor</a>
-                    </div>
-                    <div id="facebook-timeline-1" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            Ola mundo ...
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a class="panel-title" data-toggle="collapse"
-                           data-parent="#facebook-timeline" href="#facebook-timeline-2">
-                            Isabela</a>
-                    </div>
-                    <div id="facebook-timeline-2" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            Ola mundo ...
-                        </div>
-                    </div>
-                </div>
+        <div class="panel-body social-scroll">
+            <div ng-repeat="post in post.facebook">
+                {{post}}
+                <hr>
             </div>
         </div>
     </div>
@@ -57,50 +35,28 @@ COLUNA ESQUERDA
     <div class="panel panel-default">
         <div class="panel-heading"><img src="assets/img/twitter-logo.png"
                                         class="social-twitter-img"></div>
-        <div class="panel-body">
-            <div class="panel-group" id="twitter-timeline">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a class="panel-title" data-toggle="collapse"
-                           data-parent="#twitter-timeline" href="#twitter-timeline-1">
-                            Heitor</a>
-                    </div>
-                    <div id="twitter-timeline-1" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            Ola mundo ...
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a class="panel-title" data-toggle="collapse"
-                           data-parent="#twitter-timeline" href="#twitter-timeline-2">
-                            Isabela</a>
-                    </div>
-                    <div id="twitter-timeline-2" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            Ola mundo ...
-                        </div>
-                    </div>
-                </div>
+        <div class="panel-body social-scroll">
+            <div ng-repeat="post in post.twitter">
+                {{post}}
+                <hr>
             </div>
         </div>
-    </div>
-    <!--tweet-->
-    <div class="well">
-        <form class="form-horizontal" role="form">
-            <h4>O que você deseja compartilhar?</h4>
+        <!--tweet-->
+        <div class="well">
+            <form class="form-horizontal" role="form">
+                <h4>O que você deseja compartilhar?</h4>
 
-            <div class="form-group" style="padding:14px;"><textarea class="form-control"
-                                                                    placeholder="Atualize seu status no Twitter"></textarea>
-            </div>
-            <button class="btn btn-primary pull-right" type="button"> Tweet</button>
-            <ul class="list-inline">
-                <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
-                <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
-                <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
-            </ul>
-        </form>
+                <div class="form-group" style="padding:14px;"><textarea class="form-control"
+                                                                        placeholder="Atualize seu status no Twitter"></textarea>
+                </div>
+                <button class="btn btn-primary pull-right" type="button"> Tweet</button>
+                <ul class="list-inline">
+                    <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
+                    <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
+                </ul>
+            </form>
+        </div>
     </div>
 </div>
 <!--

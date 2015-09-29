@@ -353,3 +353,8 @@ small.text-muted {
     margin-left: 59%;
 }
 
+div.social-scroll {
+    width: 100%;
+    height: 400px;
+    overflow: scroll;
+}

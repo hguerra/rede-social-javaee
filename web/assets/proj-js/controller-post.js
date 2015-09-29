@@ -7,6 +7,9 @@ app.controller('PostController', function () {
      Atributos
      */
     post.buscarPost = '';
+    post.facebook = [];
+    post.twitter = [];
+    /*Fake*/
     post.feeds = [
         {
             'titulo': '@Heitor 28/09/2015',
@@ -35,6 +38,13 @@ app.controller('PostController', function () {
     post.hashtag = [{'hashtag': '#um'}, {'hashtag': '#dois'}, {'hashtag': '#tres'},
         {'hashtag': '#quatro'}, {'hashtag': '#cinco'}, {'hashtag': '#seis'},
         {'hashtag': '#sete'}, {'hashtag': '#oito'}, {'hashtag': '#nove'}, {'hashtag': '#dez'}];
+    timelineFake = function (){
+        for(i = 1; i <= 10; i++){
+            post.facebook.push(i);
+            post.twitter.push(i);
+        }
+    }
+    timelineFake();
     /*
      Metodos
      */
@@ -44,7 +54,7 @@ app.controller('PostController', function () {
         post.titulo = '';
         post.mensagem = '';
         post.imagem = '';
-    };
+    }
     post.remove = function (feed) {
         var index = post.feeds.indexOf(feed)
         post.feeds.splice(index, 1);
