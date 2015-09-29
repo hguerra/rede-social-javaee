@@ -164,7 +164,7 @@ hr {
     padding: 3px;
     height: 128px;
     width: 128px;
-    margin-top: 40%;
+    margin-top: -5%;
     background-size: cover;
     background: url("../img/logo-reversex128.png") no-repeat;
 }
@@ -321,10 +321,6 @@ small.text-muted {
         padding-left: 3px;
     }
 }
-
-/*
-Imagens
-*/
 .user-img {
     width: 60px;
     height: 60px;
@@ -356,3 +352,4 @@ Imagens
     font-size: 10px;
     margin-left: 59%;
 }
+

@@ -29,11 +29,8 @@
         <br/>
         <span><img src="assets/img/hash.png"> Tags</span>
 
-        <ul class="nav hidden-xs" id="hashtag">
-            <br/>
-            <li><a href="#"> #Uhuu</a></li>
-            <li><a href="#"> #Uhuu</a></li>
-            <li><a href="#"> #Uhuu</a></li>
+        <ul ng-repeat= "tag in post.hashtag" class="nav hidden-xs" id="hashtag">
+            <li><a href="#">{{tag.hashtag}}</a></li>
         </ul>
     </div>
     <!--logo-->

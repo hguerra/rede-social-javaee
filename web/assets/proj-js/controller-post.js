@@ -32,6 +32,9 @@ app.controller('PostController', function () {
         'nome': 'Heitor',
         'imagem': 'assets/img/storm-user.jpg'
     };
+    post.hashtag = [{'hashtag': '#um'}, {'hashtag': '#dois'}, {'hashtag': '#tres'},
+        {'hashtag': '#quatro'}, {'hashtag': '#cinco'}, {'hashtag': '#seis'},
+        {'hashtag': '#sete'}, {'hashtag': '#oito'}, {'hashtag': '#nove'}, {'hashtag': '#dez'}];
     /*
      Metodos
      */
