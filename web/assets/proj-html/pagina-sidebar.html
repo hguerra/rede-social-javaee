@@ -4,13 +4,14 @@
                 class="glyphicon glyphicon-chevron-right"></i></a></li>
     </ul>
     <ul class="nav hidden-xs" id="lg-menu">
-        <li><a href="#"><img ng-src="{{post.usuario.imagem}}"
+        <li><a><img ng-src="{{post.usuario.imagem}}"
                              class="user-img"><span> {{post.usuario.nome}}</span></a></li>
-        <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Destaques</a>
+        <li class="active"><a href="#rede-post"><i class="glyphicon glyphicon-list-alt"></i> Destaques</a>
         </li>
-        <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Stories</a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Saved</a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
+        <li><a href="#rede-post"><i class="glyphicon glyphicon-comment"></i> Mensagens</a></li>
+        <li><a href="#rede-post"><i class="glyphicon glyphicon-star"></i> Following</a></li>
+        <li><a href="#"><i class="fa fa-thumbs-up"></i> Followers</a></li>
+        <li><a href="index.html"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
 
     </ul>
     <!-- dispositivos pequenos apenas-->
@@ -30,7 +31,7 @@
         <span><img src="assets/img/hash.png"> Tags</span>
 
         <ul ng-repeat= "tag in post.hashtag" class="nav hidden-xs" id="hashtag">
-            <li><a href="#">{{tag.hashtag}}</a></li>
+            <li><a>{{tag.hashtag}}</a></li>
         </ul>
     </div>
     <!--logo-->
