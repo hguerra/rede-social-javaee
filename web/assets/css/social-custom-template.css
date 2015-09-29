@@ -337,24 +337,21 @@ small.text-muted {
     height: 20px;
 }
 
-.button-delete{
+.button-box-final{
     position: relative;
     height: 25px;
     padding: 5px 5px;
     font-size: 10px;
     margin-left: 50%;
 }
-
-.button-image-delete{
+.button-box-inicio{
     position: relative;
     height: 25px;
     padding: 5px 5px;
     font-size: 10px;
-    margin-left: 59%;
 }
-
 div.social-scroll {
     width: 100%;
     height: 400px;
-    overflow: scroll;
+    overflow: auto;
 }

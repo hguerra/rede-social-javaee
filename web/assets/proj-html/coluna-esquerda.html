@@ -19,14 +19,27 @@ COLUNA ESQUERDA
             <h4>O que você deseja compartilhar?</h4>
 
             <div class="form-group" style="padding:14px;">
-                                            <textarea class="form-control"
-                                                      placeholder="Atualize seu status no Facebook"></textarea>
+                <textarea class="form-control" placeholder="Atualize seu status no Facebook"></textarea>
             </div>
-            <button class="btn btn-primary pull-right" type="button">Post</button>
+            <!--
+            url
+            -->
+            <div id="url-imagem-facebook" class="collapse">
+                <div class="modal-body">
+                    <div class="form-group" style="padding:14px;">
+                        <input type="text" class="form-control input-lg" autofocus=""
+                               placeholder="Digite a url da imagem" id="input-facebook-url"
+                               name="textarea-post-mensagem">
+                    </div>
+                </div>
+            </div>
+            <!--
+             url
+             -->
+            <button data-ng-click="post.publicar()" class="btn btn-primary pull-right" type="button">Post</button>
             <ul class="list-inline">
-                <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
-                <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
-                <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
+                <li><a data-toggle="collapse" href="#url-imagem-facebook"><i class="glyphicon glyphicon-camera"></i></a>
+                </li>
             </ul>
         </form>
     </div>
@@ -36,28 +49,45 @@ COLUNA ESQUERDA
         <div class="panel-heading"><img src="assets/img/twitter-logo.png"
                                         class="social-twitter-img"></div>
         <div class="panel-body social-scroll">
-            <div ng-repeat="post in post.twitter">
-                {{post}}
+            <div ng-repeat="tweet in post.twitter">
+                <button data-ng-click="post.retweet(tweet)"
+                        class="btn btn-info btn-sm button-box-inicio"><i
+                        class="glyphicon glyphicon-retweet"></i>
+                </button>
+                {{tweet}}
                 <hr>
             </div>
         </div>
-        <!--tweet-->
-        <div class="well">
-            <form class="form-horizontal" role="form">
-                <h4>O que você deseja compartilhar?</h4>
-
-                <div class="form-group" style="padding:14px;"><textarea class="form-control"
-                                                                        placeholder="Atualize seu status no Twitter"></textarea>
-                </div>
-                <button class="btn btn-primary pull-right" type="button"> Tweet</button>
-                <ul class="list-inline">
-                    <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
-                    <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
-                    <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
-                </ul>
-            </form>
-        </div>
     </div>
+    <!--tweet-->
+    <div class="well">
+        <form class="form-horizontal" role="form">
+            <h4>O que você deseja compartilhar?</h4>
+
+            <div class="form-group" style="padding:14px;">
+                <textarea class="form-control" placeholder="Atualize seu status no Twitter"></textarea>
+            </div>
+            <!--url-->
+            <div id="url-imagem-twitter" class="collapse">
+                <div class="modal-body" style="padding: 14px;">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" autofocus=""
+                               placeholder="Digite a url da imagem" id="input-tweet-url"
+                               name="textarea-post-mensagem">
+                    </div>
+                </div>
+            </div>
+            <!--
+             url
+             -->
+            <button data-ng-click="post.tweet()" class="btn btn-primary pull-right" type="button"> Tweet</button>
+            <ul class="list-inline">
+                <li><a data-toggle="collapse" href="#url-imagem-twitter"><i class="glyphicon glyphicon-camera"></i></a>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
 </div>
 <!--
 /COLUNA ESQUERDA
