@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.google.gson.Gson;
 import com.model.PersonData;
 
 /**
@@ -8,6 +9,7 @@ import com.model.PersonData;
 public class MainTest {
     public static void main(String[] args) {
         PersonData p = new PersonData("Heitor", "Carneiro");
-        System.out.println(p.getFirstName());
+        String json = new Gson().toJson(p, PersonData.class);
+        System.out.println(json);
     }
 }
