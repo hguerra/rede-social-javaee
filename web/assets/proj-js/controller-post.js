@@ -1,7 +1,7 @@
 /**
  * Created by heitor on 28/09/15.
  */
-app.controller('PostController', function () {
+app.controller('PostController', function ($http) {
     var post = this;
     /*
      Atributos
@@ -139,7 +139,14 @@ app.controller('PostController', function () {
     };
     /*server*/
     post.getDados = function () {
-        console.log('ok');
+        $http({
+            method: 'GET',
+            url: '/recebe'
+        }).then(function successCallback(response) {
+            console.log(response);
+        }, function errorCallback(response) {
+            console.log(response);
+        });
     };
     post.setDados = function () {
         console.log('ok');
