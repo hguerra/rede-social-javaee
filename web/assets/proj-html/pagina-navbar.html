@@ -42,7 +42,13 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="#perfilAmigoModal" role="button" data-toggle="modal"><span class="glyphicon glyphicon-bell"></span></a>
+                <a><span data-ng-click="post.getDados()" class="fa fa-download"></span></a>
+            </li>
+            <li>
+                <a data-ng-click="post.setDados()"><span class="fa fa-upload"></span></a>
+            </li>
+            <li>
+                <a href="#perfilAmigoModal" role="button" data-toggle="modal"><span class="fa fa-user-plus"></span></a>
             </li>
         </ul>
     </nav>

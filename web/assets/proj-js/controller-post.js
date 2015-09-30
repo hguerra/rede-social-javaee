@@ -137,6 +137,13 @@ app.controller('PostController', function () {
         var retweet = post.twitter[index];
         console.log(retweet);
     };
+    /*server*/
+    post.getDados = function () {
+        console.log('ok');
+    };
+    post.setDados = function () {
+        console.log('ok');
+    };
 });
 
 
