@@ -1,0 +1,50 @@
+<div id="perfilAmigoModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                Perfil
+            </div>
+            <div class="panel-body social-scroll" style="height: 650px;">
+                <div>
+                    <a href="#"><img ng-src="{{post.amigo.imagem}}"
+                                     class="user-img"><span style="color: red"> {{post.amigo.nome}}</span></a>
+
+                    <form class="form center-block">
+                        <div class="form-group">
+                            <br/>
+                            <textarea class="form-control input-lg" autofocus="" placeholder="Mensagem privada"
+                                      id="textarea-amigo-mensagem"
+                                      name="textarea-amigo-mensagem" ng-model="post.mensagem"></textarea>
+                        </div>
+                        <div>
+                            <button data-ng-click="post.newPost()" class="btn btn-primary btn-sm"
+                                    data-dismiss="modal"
+                                    aria-hidden="true">Enviar
+                            </button>
+                        </div>
+                    </form>
+                    <hr>
+                </div>
+                <div ng-repeat="feed in post.amigo.feeds">
+                    <div class="panel-heading">
+                        <h4>
+                            {{feed.titulo}}
+                        </h4>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body">
+                        {{feed.mensagem}} <br/><br/>
+
+                        <div class="panel-thumbnail">
+                            <img ng-src="{{feed.imagem}}" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal-header-->

@@ -37,6 +37,31 @@ app.controller('PostController', function () {
             'imagem': 'assets/img/butters.jpg'
         }
     ];
+    post.amigo =
+    {
+        'id': 69696969,
+        'nome': 'Butters',
+        'imagem': 'assets/img/butters.jpg',
+        'feeds': [
+            {
+                'titulo': '@Heitor 28/09/2015',
+                'mensagem': 'Ola mundo',
+                'imagem': 'assets/img/bg_4.jpg'
+            },
+            {
+                'titulo': '@Isabela 28/09/2015',
+                'mensagem': 'Ola mundo',
+                'imagem': 'assets/img/bg_4.jpg'
+            },
+            {
+                'titulo': '@Alguem 28/09/2015',
+                'mensagem': 'Ola mundo',
+                'imagem': 'assets/img/bg_4.jpg'
+            }
+
+        ]
+    };
+
     post.followers = [
         {
             'id': 69696969,
