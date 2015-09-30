@@ -1,0 +1,17 @@
+<div id="followingModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                Following
+            </div>
+            <div class="panel-body social-scroll" style="height: 650px;">
+                <div ng-repeat="following in post.following">
+                    <a href="#"><img ng-src="{{following.imagem}}"
+                                     class="user-img"><span style="color: red"> {{following.nome}}</span></a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

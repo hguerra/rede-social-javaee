@@ -5,10 +5,12 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 Mensagens
             </div>
-            <div class="modal-body">
-                ola mundo
-                <div class="panel-thumbnail">
-                    <img ng-src="assets/img/bg_4.jpg" class="img-responsive">
+            <div class="panel-body social-scroll" style="height: 650px;">
+                <div ng-repeat="entrada in post.caixaEntrada">
+                    <a href="#"><img ng-src="{{entrada.remetenteImagem}}"
+                                     class="user-img"><span style="color: red"> {{entrada.remetenteNome}}</span></a>
+                    {{entrada.mensagem}}
+                    <hr>
                 </div>
             </div>
         </div>

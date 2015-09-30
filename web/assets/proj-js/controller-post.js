@@ -6,13 +6,49 @@ app.controller('PostController', function () {
     /*
      Atributos
      */
-    /*rede-social*/
-    post.buscarPost = '';
     /*facebook*/
     post.facebook = [];
     /*twitter*/
     post.twitter = [];
-    /*Fake*/
+    /*rede-social*/
+    post.buscarPost = '';
+    post.caixaEntrada = [
+        {
+            'remetenteNome': 'God',
+            'remetenteImagem': 'assets/img/butters.jpg',
+            'mensagem': 'mensagem privada 1'
+        },
+        {
+            'remetenteNome': 'God',
+            'remetenteImagem': 'assets/img/butters.jpg',
+            'mensagem': 'mensagem privada 2'
+        }
+
+    ];
+    post.following = [
+        {
+            'id': 69696969,
+            'nome': 'Butters',
+            'imagem': 'assets/img/butters.jpg'
+        },
+        {
+            'id': 999999999,
+            'nome': 'Butters 2',
+            'imagem': 'assets/img/butters.jpg'
+        }
+    ];
+    post.followers = [
+        {
+            'id': 69696969,
+            'nome': 'Butters',
+            'imagem': 'assets/img/butters.jpg'
+        },
+        {
+            'id': 999999999,
+            'nome': 'Butters 2',
+            'imagem': 'assets/img/butters.jpg'
+        }
+    ];
     post.feeds = [
         {
             'titulo': '@Heitor 28/09/2015',
@@ -62,20 +98,20 @@ app.controller('PostController', function () {
     post.remove = function (feed) {
         var index = post.feeds.indexOf(feed);
         post.feeds.splice(index, 1);
-    }
+    };
     /*Facebook*/
     post.publicar = function () {
         console.log('ok');
-    }
+    };
     /*Twitter*/
     post.tweet = function () {
 
-    }
+    };
     post.retweet = function (tweet) {
         var index = post.twitter.indexOf(tweet);
         var retweet = post.twitter[index];
         console.log(retweet);
-    }
+    };
 });
 
 
