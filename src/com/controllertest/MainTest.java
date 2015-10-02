@@ -1,4 +1,4 @@
-package com.controller;
+package com.controllertest;
 
 import com.google.gson.Gson;
 import com.model.PersonData;

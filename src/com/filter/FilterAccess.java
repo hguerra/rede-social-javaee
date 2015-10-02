@@ -9,7 +9,7 @@ import java.io.IOException;
  * Created by heitor on 30/09/15.
  */
 @WebFilter("*")
-public class FilterAcesso implements Filter {
+public class FilterAccess implements Filter {
     public void destroy() {
     }
 

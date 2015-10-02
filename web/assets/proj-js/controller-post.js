@@ -142,15 +142,24 @@ app.controller('PostController', function ($http) {
         $http({
             method: 'GET',
             url: '/recebe'
-        }).then(function successCallback(response) {
-            console.log(response);
-        }, function errorCallback(response) {
-            console.log(response);
-        });
+        }).then(onSuccess).catch(onError);
     };
+
+    function onError(err) {
+        $log.error(err);
+        return $q.reject(err);
+    }
+
+    function onSuccess(response) {
+        var resp = response.data || [];
+        console.log(resp);
+        return resp;
+    }
+
     post.setDados = function () {
         console.log('ok');
     };
+    
 });
 
 
