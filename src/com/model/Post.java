@@ -7,6 +7,7 @@ public class Post {
     private Integer idUser;
     private String title;
     private String message;
+    private String image;
 
     public Post(Integer idUser, String message) {
         this.message = message;
@@ -15,26 +16,11 @@ public class Post {
     }
 
     public void setTitle() {
-        /* User information */
-    	/*
-        Integer oldNumberPost = SessionUser.getUser().getNumberPost();
-        Integer newNumberPost = oldNumberPost + 1;
-        SessionUser.getUser().setNumberPost(newNumberPost);
-        */
-		/* Set Title */
-    	/*
-    	SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
         String date = sdf.format(new Date());
         StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append("#");
-        stringBuffer.append(newNumberPost);
-        stringBuffer.append("-");
-        stringBuffer.append(date);
-    	 */
-    	SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
-        String date = sdf.format(new Date());
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append("#");
+        stringBuffer.append("@");
+        stringBuffer.append(SessionUser.getUserName());
         stringBuffer.append(date);
         this.title = stringBuffer.toString();
     }
@@ -57,6 +43,14 @@ public class Post {
 
     public void setIdUser(Integer idUser) {
         this.idUser = idUser;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 }

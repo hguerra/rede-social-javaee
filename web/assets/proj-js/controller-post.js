@@ -75,16 +75,16 @@ app.controller('PostController', function ($http) {
         }
     ];
     post.feeds = [
-        {
-            'titulo': '@Heitor 28/09/2015',
-            'mensagem': 'Ola mundo',
-            'imagem': 'assets/img/bg_4.jpg'
-        },
-        {
-            'titulo': '@Isabela 28/09/2015',
-            'mensagem': 'Ola mundo',
-            'imagem': 'assets/img/bg_4.jpg'
-        },
+        //{
+        //    'titulo': '@Heitor 28/09/2015',
+        //    'mensagem': 'Ola mundo',
+        //    'imagem': 'assets/img/bg_4.jpg'
+        //},
+        //{
+        //    'titulo': '@Isabela 28/09/2015',
+        //    'mensagem': 'Ola mundo',
+        //    'imagem': 'assets/img/bg_4.jpg'
+        //},
         {
             'titulo': '@Alguem 28/09/2015',
             'mensagem': 'Ola mundo',
@@ -139,13 +139,15 @@ app.controller('PostController', function ($http) {
     };
     /*server*/
     post.getDados = function () {
-        $http.get('recebe').then(onSuccess, onError);
+        $http.get('/rest').then(onSuccess, onError);
 
-        function onSuccess(response){
+        function onSuccess(response) {
             var resp = response.data || [];
             console.log(resp);
+            updateFeeds(resp);
         }
-        function onError(err){
+
+        function onError(err) {
             console.log(err);
         }
     };
@@ -153,14 +155,19 @@ app.controller('PostController', function ($http) {
         var data = {"firstName": "hguerra", "lastName": "teste"};
         $http.post('login', data).then(onSuccess, onError);
 
-        function onSuccess(response){
+        function onSuccess(response) {
             alert('funcionou');
         }
-        function onError(err){
+
+        function onError(err) {
             alert('deu merda');
         }
     };
-
+    function updateFeeds(feedsList) {
+        $.each(feedsList, function (index, feed) {
+            post.feeds.unshift(feed);
+        });
+    };
 });
 
 
