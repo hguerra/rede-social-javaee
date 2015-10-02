@@ -141,25 +141,31 @@ app.controller('PostController', function ($http) {
     post.getDados = function () {
         $http({
             method: 'GET',
-            url: '/recebe'
-        }).then(onSuccess).catch(onError);
+            url: 'recebe'
+        }).then(function onSuccess(response) {
+            var resp = response.data || [];
+            console.log(resp);
+            return resp;
+        }, function onError(err) {
+            $log.error(err);
+            return $q.reject(err);
+        });
     };
-
-    function onError(err) {
-        $log.error(err);
-        return $q.reject(err);
-    }
-
-    function onSuccess(response) {
-        var resp = response.data || [];
-        console.log(resp);
-        return resp;
-    }
-
     post.setDados = function () {
-        console.log('ok');
+        var data = {"firstName": "Heitor", "lastName": "Carneiro"};
+        /*primeira*/
+        $http.post('login', data);
+        /*segunda*/
+        $http({
+            method: 'POST',
+            url: 'login',
+            data: {"nome": data},
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
     };
-    
+
 });
 
 

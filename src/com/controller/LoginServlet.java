@@ -1,7 +1,11 @@
 package com.controller;
 
+import com.google.gson.Gson;
+import com.model.PersonData;
 import com.model.SessionUser;
 import com.model.User;
+
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -12,21 +16,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		// get request parameters for userID and password
-		String user = request.getParameter("user");
-		String pwd = request.getParameter("pwd");
+    protected void doPost(HttpServletRequest request,
+                          HttpServletResponse response) throws ServletException, IOException {
+        // get request parameters for userID and password
+        String user = request.getParameter("firstName");
+        String pwd = request.getParameter("lastName");
+        String nome = request.getParameter("nome");
+        System.out.println(nome);
+        System.out.println(user);
+        System.out.println(pwd);
+//
+//        PersonData p = new Gson().fromJson(requestJson(request), PersonData.class);
+//
+//        if (p == null) {
+//            System.out.println("p null");
+//        } else {
+//            System.out.println(p.getFirstName());
+//            System.out.println(p.getLastName());
+//        }
 
-		System.out.println(user);
-		
+
 //		User sessionUser = SessionUser.getData().login(user, pwd);
 //
 //		if (sessionUser != null) {
@@ -47,5 +64,19 @@ public class LoginServlet extends HttpServlet {
 //			out.println("<font color=white>Either user name or password is wrong.</font>");
 //			rd.include(request, response);
 //		}
-	}
+    }
+
+    public String requestJson(HttpServletRequest request) {
+        StringBuffer sb = new StringBuffer();
+        try {
+            BufferedReader reader = request.getReader();
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
 }
