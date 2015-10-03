@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.model.TransformaStringMD5;
+import com.model.util.TransformStringMD5;
 
 public class TransformaStringMD5Test {
 	String senha;
@@ -19,11 +19,11 @@ public class TransformaStringMD5Test {
 	@Before
 	public void init() {
 		senha = "123456";
-		md5Senha = TransformaStringMD5.md5(senha);
+		md5Senha = TransformStringMD5.md5(senha);
 		senhaErrada = "123457";
-		md5SenhaErrada = TransformaStringMD5.md5(senhaErrada);
+		md5SenhaErrada = TransformStringMD5.md5(senhaErrada);
 		senhaCorreta = "123456";
-		md5SenhaCorreta = TransformaStringMD5.md5(senhaCorreta);
+		md5SenhaCorreta = TransformStringMD5.md5(senhaCorreta);
 	}
 
 	@Test

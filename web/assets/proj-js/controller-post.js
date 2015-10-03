@@ -37,6 +37,7 @@ app.controller('PostController', function ($http) {
             'imagem': 'assets/img/butters.jpg'
         }
     ];
+    /*perfil do amigo*/
     post.amigo =
     {
         'id': 69696969,
@@ -75,16 +76,6 @@ app.controller('PostController', function ($http) {
         }
     ];
     post.feeds = [
-        //{
-        //    'titulo': '@Heitor 28/09/2015',
-        //    'mensagem': 'Ola mundo',
-        //    'imagem': 'assets/img/bg_4.jpg'
-        //},
-        //{
-        //    'titulo': '@Isabela 28/09/2015',
-        //    'mensagem': 'Ola mundo',
-        //    'imagem': 'assets/img/bg_4.jpg'
-        //},
         {
             'titulo': '@Alguem 28/09/2015',
             'mensagem': 'Ola mundo',

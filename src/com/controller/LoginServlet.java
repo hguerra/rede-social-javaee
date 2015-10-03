@@ -1,21 +1,15 @@
 package com.controller;
 
 import com.google.gson.Gson;
-import com.model.PersonData;
-import com.model.SessionUser;
-import com.model.User;
+import com.model.user.PersonData;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginServlet
@@ -30,15 +24,15 @@ public class LoginServlet extends HttpServlet {
         String user = request.getParameter("firstName");
         String pwd = request.getParameter("lastName");
 
-        PersonData p = new Gson().fromJson(requestJson(request), PersonData.class);
-
-        if (p != null) {
-            System.out.println(p.getFirstName());
-            System.out.println(p.getLastName());
-            Callback.onSuccess(response);
-        } else {
-            Callback.onError(response);
-        }
+//        PersonData p = new Gson().fromJson(requestJson(request), PersonData.class);
+//
+//        if (p != null) {
+//            System.out.println(p.getFirstName());
+//            System.out.println(p.getLastName());
+//            Callback.onSuccess(response);
+//        } else {
+//            Callback.onError(response);
+//        }
 //
 //        User sessionUser = SessionUser.getData().login(user, pwd);
 //

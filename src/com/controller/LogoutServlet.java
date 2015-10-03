@@ -1,7 +1,7 @@
 package com.controller;
 
-import com.model.SessionUser;
-import com.model.User;
+import com.model.user.SessionUser;
+import com.model.user.User;
 
 import java.io.IOException;
 

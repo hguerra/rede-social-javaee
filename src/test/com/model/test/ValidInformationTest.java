@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.model.ValidInformation;
+import com.model.util.ValidInformation;
 
 public class ValidInformationTest {
 	

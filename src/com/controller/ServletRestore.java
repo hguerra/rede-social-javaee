@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.google.gson.Gson;
-import com.model.Fake;
+import test.com.model.test.Fake;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

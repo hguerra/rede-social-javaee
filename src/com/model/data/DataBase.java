@@ -1,15 +1,24 @@
-package com.model;
+package com.model.data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Query;
 import com.google.gson.Gson;
+import com.model.follow.Followers;
+import com.model.follow.Following;
+import com.model.post.Hashtag;
+import com.model.user.PersonData;
+import com.model.user.User;
+import com.model.post.Post;
+import com.model.util.TransformStringMD5;
+import com.model.util.ValidInformation;
 
 public class DataBase {
     private final static String DATA_BASE_PATH = "database/data.db4o";
@@ -159,7 +168,7 @@ public class DataBase {
         for (User u : queryList) {
             if (u.getAccessName().equals(accessName)
                     && u.getPassword()
-                    .equals(TransformaStringMD5.md5(password))) {
+                    .equals(TransformStringMD5.md5(password))) {
                 user = u;
             }
         }
@@ -186,6 +195,20 @@ public class DataBase {
         }
         return messages;
     }
+
+    public List<Post> searchPostList(Integer idUser) {
+        Query query = data.query();
+        query.constrain(Post.class);
+        ObjectSet<Post> queryList = query.execute();
+        List<Post> messages = new ArrayList<>();
+        for (Post m : queryList) {
+            if (m.getIdUser().equals(idUser)) {
+                messages.add(m);
+            }
+        }
+        return messages;
+    }
+
 
     public Post searchPost(String title) {
         Query query = data.query();
@@ -224,7 +247,87 @@ public class DataBase {
         return answer;
     }
 
-	/* MongoDB */
+    /*Following*/
+    public void addFollowing(Following following) {
+        data.store(following);
+        data.commit();
+    }
+
+    public void removeFollowing(Following following) {
+        data.delete(following);
+        data.commit();
+    }
+
+    public List<PersonData> getFollowing(Integer userId) {
+        Query query = data.query();
+        query.constrain(Following.class);
+        ObjectSet<Following> queryList = query.execute();
+        List<PersonData> pData = new ArrayList<>();
+        for (Following f : queryList) {
+            if (f.getIdUser().equals(userId)) {
+                Integer idFollowing = f.getIdUserFollowing();
+                User temp = searchUser(idFollowing);
+                if (temp != null) {
+                    pData.add(new PersonData(idFollowing, temp.getName(), temp.getImage(), searchPostList(idFollowing)));
+                }
+            }
+        }
+        return pData;
+    }
+
+    /*Followers*/
+    public void addFollowers(Followers followers) {
+        data.store(followers);
+        data.commit();
+    }
+
+    public void removeFollowers(Followers followers) {
+        data.delete(followers);
+        data.commit();
+    }
+
+    public List<PersonData> getFollowers(Integer userId) {
+        Query query = data.query();
+        query.constrain(Followers.class);
+        ObjectSet<Followers> queryList = query.execute();
+        List<PersonData> pData = new ArrayList<>();
+        for (Followers f : queryList) {
+            if (f.getIdUser().equals(userId)) {
+                Integer idFollowers = f.getIdUserFollowers();
+                User temp = searchUser(idFollowers);
+                if (temp != null) {
+                    pData.add(new PersonData(idFollowers, temp.getName(), temp.getImage(), searchPostList(idFollowers)));
+                }
+            }
+        }
+        return pData;
+    }
+
+    /*Hashtags*/
+
+    public void addHashTag(Hashtag hashtag) {
+        data.store(hashtag);
+        data.commit();
+    }
+
+    public void removeHashTag(Hashtag hashtag) {
+        data.delete(hashtag);
+        data.commit();
+    }
+
+    public List<Hashtag> getHashTags(Integer userId) {
+        Query query = data.query();
+        query.constrain(Hashtag.class);
+        ObjectSet<Hashtag> queryList = query.execute();
+        List<Hashtag> hashs = new ArrayList<>();
+        for (Hashtag h : queryList) {
+            if (h.getIdUser().equals(userId)) {
+                hashs.add(h);
+            }
+        }
+        return hashs;
+    }
+    /* MongoDB */
 
     public String userToJson(User user) {
         Gson gson = new Gson();

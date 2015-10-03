@@ -1,7 +1,7 @@
 package test.com.model.test;
 
-import com.model.DataBase;
-import com.model.User;
+import com.model.data.DataBase;
+import com.model.user.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,7 +1,7 @@
 package com.controller;
 
-import com.model.Post;
-import com.model.SessionUser;
+import com.model.post.Post;
+import com.model.user.SessionUser;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

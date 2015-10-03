@@ -1,10 +1,10 @@
-package com.model;
+package com.model.util;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class TransformaStringMD5 {
+public class TransformStringMD5 {
 
 	public static String md5(String senha) {
 		String sen = "";
