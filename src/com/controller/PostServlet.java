@@ -18,7 +18,6 @@ import java.io.IOException;
 public class PostServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String post = request.getParameter("textArea");
-
         if (post != null && !post.isEmpty()) {
             Post p = new Post(SessionUser.getUserId(), post);
             SessionUser.getData().addPost(p);

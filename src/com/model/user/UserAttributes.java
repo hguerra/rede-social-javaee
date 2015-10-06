@@ -6,33 +6,33 @@ import com.google.gson.Gson;
  * Created by heitor on 03/10/15.
  */
 public class UserAttributes {
-    public String jsonPost() {
+    public static String jsonPost() {
         return new Gson().toJson(SessionUser.getPostList());
     }
 
-    public String jsonUser() {
+    public static String jsonUser() {
         return new Gson().toJson(SessionUser.getUser());
     }
 
-    public String jsonInbox() {
+    public static String jsonInbox() {
         String json = "[{\"remetenteNome\": \"God\", \"remetenteImagem\" : \"assets/img/butters.jpg\", \"mensagem\": \"'mensagem privada 1\"}, {\"remetenteNome\": \"God\", \"remetenteImagem\" : \"assets/img/butters.jpg\", \"mensagem\": \"'mensagem privada 2\"}, {\"remetenteNome\": \"God\", \"remetenteImagem\" : \"assets/img/butters.jpg\", \"mensagem\": \"'mensagem privada 3\"}]";
         return json;
     }
 
-    public String jsonMailSent() {
+    public static String jsonMailSent() {
         String json = "[{\"remetenteNome\": \"God\", \"remetenteImagem\" : \"assets/img/butters.jpg\", \"mensagem\": \"'mensagem privada 1\"}, {\"remetenteNome\": \"God\", \"remetenteImagem\" : \"assets/img/butters.jpg\", \"mensagem\": \"'mensagem privada 2\"}, {\"remetenteNome\": \"God\", \"remetenteImagem\" : \"assets/img/butters.jpg\", \"mensagem\": \"'mensagem privada 3\"}]";
         return json;
     }
 
-    public String jsonFollowing() {
+    public static String jsonFollowing() {
         return new Gson().toJson(SessionUser.getFollowings());
     }
 
-    public String jsonFollowers() {
+    public static String jsonFollowers() {
         return new Gson().toJson(SessionUser.getFollowers());
     }
 
-    public String jsonHashtags() {
+    public static String jsonHashtags() {
         return new Gson().toJson(SessionUser.getHashtags());
     }
 }

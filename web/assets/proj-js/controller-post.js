@@ -131,13 +131,11 @@ app.controller('PostController', function ($http) {
     /*server*/
     post.getDados = function () {
         $http.get('/rest').then(onSuccess, onError);
-
         function onSuccess(response) {
             var resp = response.data || [];
             console.log(resp);
             updateFeeds(resp);
         }
-
         function onError(err) {
             console.log(err);
         }
@@ -152,6 +150,21 @@ app.controller('PostController', function ($http) {
 
         function onError(err) {
             alert('deu merda');
+        }
+    };
+    post.login = function () {
+        var accessName = $("#form-last-name").val();
+        var password = $("#form-password").val();
+        if(accessName !== '' && password !== ''){
+            var data = {"user": accessName, "pwd": password};
+            $http.post('login', data).then(onSuccess, onError);
+            function onSuccess(response) {
+                window.location.href = "index.html";
+            }
+            function onError(err) {
+                var accessName = $("#form-last-name").val('');
+                var password = $("#form-password").val('');
+            }
         }
     };
     function updateFeeds(feedsList) {

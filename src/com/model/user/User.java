@@ -27,7 +27,7 @@ public class User {
         this.id = id;
         this.name = name;
         this.accessName = accessName;
-        this.password = password;
+        this.password = TransformStringMD5.md5(password);
         this.image = image;
         this.numberPost = numberPost;
         this.email = email;

@@ -1,10 +1,6 @@
 package com.model.data;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
@@ -17,11 +13,12 @@ import com.model.post.Hashtag;
 import com.model.user.PersonData;
 import com.model.user.User;
 import com.model.post.Post;
+import com.model.user.UserDAO;
 import com.model.util.TransformStringMD5;
 import com.model.util.ValidInformation;
 
 public class DataBase {
-    private final static String DATA_BASE_PATH = "database/data.db4o";
+    private final static String DATA_BASE_PATH = "/home/heitor/Documentos/Desenvolvimento/Java/ideaProjects/stuffs/database/data.db4o";
     private ObjectContainer data;
     /* Singleton */
     private static DataBase uniqueInstance;
@@ -93,7 +90,6 @@ public class DataBase {
         query.constrain(User.class);
         ObjectSet<User> queryList = query.execute();
         List<User> result = new ArrayList<>();
-
         for (User u : queryList) {
             if (u.getName().equals(name))
                 result.add(u);
@@ -106,7 +102,6 @@ public class DataBase {
         query.constrain(User.class);
         ObjectSet<User> queryList = query.execute();
         User result = null;
-
         for (User u : queryList) {
             if (u.getEmail().equals(email))
                 result = u;
@@ -131,7 +126,6 @@ public class DataBase {
         Query query = data.query();
         query.constrain(User.class);
         ObjectSet<User> queryList = query.execute();
-
         for (User u : queryList) {
             if (u.getName().equals(user.getName())
                     && u.getAccessName().equals(user.getAccessName())
@@ -154,7 +148,6 @@ public class DataBase {
             if (u.getAccessName().equals(user.getAccessName())
                     && u.getPassword().equals(user.getPassword())) {
                 return true;
-
             }
         }
         return false;
@@ -175,8 +168,20 @@ public class DataBase {
         return user;
     }
 
+    public User login(Login login) {
+        User user = null;
+        Query query = data.query();
+        query.constrain(User.class);
+        ObjectSet<User> queryList = query.execute();
+        for (User u : queryList) {
+            if (u.getAccessName().equals(login.getUser())
+                    && u.getPassword().equals(TransformStringMD5.md5(login.getPwd()))) {
+                user = u;
+            }
+        }
+        return user;
+    }
 	/* Post */
-
     public void addPost(Post post) {
         data.store(post);
         data.commit();
@@ -189,7 +194,7 @@ public class DataBase {
         Map<String, Post> messages = new HashMap<String, Post>();
         for (Post m : queryList) {
             if (m.getIdUser().equals(idUser)) {
-                String title = m.getTitle();
+                String title = m.getTitulo();
                 messages.put(title, m);
             }
         }
@@ -216,7 +221,7 @@ public class DataBase {
         ObjectSet<Post> queryList = query.execute();
         Post result = null;
         for (Post m : queryList) {
-            if (m.getTitle().equals(title)) {
+            if (m.getTitulo().equals(title)) {
                 result = m;
             }
         }
@@ -326,6 +331,56 @@ public class DataBase {
             }
         }
         return hashs;
+    }
+
+    /*Test*/
+    public UserDAO searchUserDAO(Integer userId) {
+        Query query = data.query();
+        query.descend("id").constrain(userId);
+        ObjectSet result = query.execute();
+        UserDAO user = (UserDAO) result.next();
+        return user;
+
+    }
+
+    public void addDataBaseObject(Object object) {
+        data.store(object);
+        data.commit();
+    }
+
+    public void removeDataBaseObject(Object object) {
+        data.delete(object);
+        data.commit();
+    }
+
+    public void updateDataBaseObject(Object object) {
+        addDataBaseObject(object);
+    }
+
+    public Object dataBaseSearchObject(String attributeName, Object attributeValue) {
+        Query query = data.query();
+        query.descend(attributeName).constrain(attributeValue);
+        ObjectSet execute = query.execute();
+        Object result = execute.next();
+        return result;
+    }
+
+    public Set dataBaseSearch(String attributeName, Object attributeValue, Class<?> c) {
+        Query query = data.query();
+        query.descend(attributeName).constrain(attributeValue);
+        ObjectSet preResult = query.execute();
+        Set result = removeGenericElements(preResult, c);
+        return result;
+    }
+
+    private static Set removeGenericElements(ObjectSet preResult, Class<?> c) {
+        Set result = new HashSet();
+        for (Object ob : preResult) {
+            if (c.isInstance(ob)) {
+                result.add(ob);
+            }
+        }
+        return result;
     }
     /* MongoDB */
 

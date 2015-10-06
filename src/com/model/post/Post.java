@@ -7,20 +7,20 @@ import java.util.Date;
 
 public class Post {
     private Integer idUser;
-    private String title;
-    private String message;
-    private String image;
+    private String titulo;
+    private String mensagem;
+    private String imagem;
 
     public Post(Integer idUser, String message) {
-        this.message = message;
+        this.mensagem = message;
         this.idUser = idUser;
         setTitle();
     }
 
     public Post(Integer idUser, String message, String image) {
-        this.message = message;
+        this.mensagem = message;
         this.idUser = idUser;
-        this.image = image;
+        this.imagem = image;
         setTitle();
     }
 
@@ -28,22 +28,22 @@ public class Post {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
         String date = sdf.format(new Date());
         StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append("@ ");
+        stringBuffer.append("@");
         stringBuffer.append(SessionUser.getUserName());
         stringBuffer.append(date);
-        this.title = stringBuffer.toString();
+        this.titulo = stringBuffer.toString();
     }
 
-    public String getTitle() {
-        return title;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMensagem() {
+        return mensagem;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 
     public Integer getIdUser() {
@@ -55,11 +55,11 @@ public class Post {
     }
 
     public String getImage() {
-        return image;
+        return imagem;
     }
 
     public void setImage(String image) {
-        this.image = image;
+        this.imagem = image;
     }
 
 }

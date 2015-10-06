@@ -19,7 +19,14 @@ public class SessionUser {
     private static List<PersonData> followings;
     private static List<PersonData> followers;
     private static List<Hashtag> hashtags;
-
+    /*Test*/
+    private static UserDAO userDAO;
+    public static UserDAO getUserDAO(){return userDAO;}
+    public static void createUserSession(UserDAO user) {
+        SessionUser.userDAO = user;
+    }
+    public static void commitChanges(){getData().updateDataBaseObject(getUserDAO());}
+    /*Test*/
     /*DataBase**/
     public static DataBase getData() {
         return data;
