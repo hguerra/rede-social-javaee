@@ -88,6 +88,10 @@ public class SessionUser {
     public static void updatePost() {
         postList = getData().searchPostList(getUserId());
     }
+
+    public static void updateHashtag() {
+        hashtags = getData().getHashTags(getUserId());
+    }
     /*Following*/
 
     public static List<PersonData> getFollowings() {

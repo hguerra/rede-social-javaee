@@ -12,6 +12,8 @@ app.controller('PostController', function ($http) {
     post.twitter = [];
     /*rede-social*/
     post.buscarPost = '';
+    post.usuario = {};
+    post.usuariosEncontrados = [];
     post.caixaEntrada = [
         {
             'remetenteNome': 'God',
@@ -98,17 +100,7 @@ app.controller('PostController', function ($http) {
             'imagem': 'assets/img/bg_4.jpg'
         }
     ];
-    /*
-     Json usuario
-     */
-    post.usuario = {
-        'id': 123456,
-        'nome': 'Heitor',
-        'imagem': 'assets/img/storm-user.jpg'
-    };
-    post.hashtag = [{'hashtag': '#um'}, {'hashtag': '#dois'}, {'hashtag': '#tres'},
-        {'hashtag': '#quatro'}, {'hashtag': '#cinco'}, {'hashtag': '#seis'},
-        {'hashtag': '#sete'}, {'hashtag': '#oito'}, {'hashtag': '#nove'}, {'hashtag': '#dez'}];
+    post.hashtag = [];
     /*
      Metodos
      */
@@ -130,26 +122,112 @@ app.controller('PostController', function ($http) {
             }
         }
     };
+    post.logout = function () {
+        $http.post('logout').then(onSuccess, onError);
+        function onSuccess(response) {
+            window.location.href = "login.jsp";
+        }
+
+        function onError(err) {
+            console.log(err);
+        }
+    }
     function updateFeeds(feedsList) {
         $.each(feedsList, function (index, feed) {
             post.feeds.unshift(feed);
         });
     };
-    post.getDados = function () {
-        $http.get('/rest').then(onSuccess, onError);
+    function updateFollowing(feedsList) {
+        $.each(feedsList, function (index, feed) {
+            post.following.unshift(feed);
+        });
+    };
+    function updateFollower(feedsList) {
+        $.each(feedsList, function (index, feed) {
+            post.followers.unshift(feed);
+        });
+    };
+    function updateInbox(feedsList) {
+        $.each(feedsList, function (index, feed) {
+            post.caixaEntrada.unshift(feed);
+        });
+    };
+    function updateHashtag(feedsList) {
+        $.each(feedsList, function (index, feed) {
+            post.hashtag.unshift(feed);
+        });
+    };
+    function updateEncontrados(feedsList) {
+        $.each(feedsList, function (index, feed) {
+            post.usuariosEncontrados.unshift(feed);
+        });
+    };
+    post.getUser = function () {
+        $http.get('/restuser').then(onSuccess, onError);
         function onSuccess(response) {
             var resp = response.data || [];
             console.log(resp);
-            updateFeeds(resp);
+            post.usuario = {
+                'id': resp.id,
+                'nome': resp.nome,
+                'imagem': resp.imagem
+            };
+            updateFeeds(resp.feeds);
         }
 
         function onError(err) {
             console.log(err);
         }
     };
-    /*restore*/
-    post.getDados();
-    /*/restore*/
+    post.getFollowing = function () {
+        $http.get('/restfollowing').then(onSuccess, onError);
+        function onSuccess(response) {
+            var resp = response.data || [];
+            updateFollowing(resp);
+        }
+
+        function onError(err) {
+            console.log(err);
+        }
+    };
+    post.getFollower = function () {
+        $http.get('/restfollowers').then(onSuccess, onError);
+        function onSuccess(response) {
+            var resp = response.data || [];
+            updateFollower(resp);
+        }
+
+        function onError(err) {
+            console.log(err);
+        }
+    };
+    post.getInbox = function () {
+        $http.get('/restinbox').then(onSuccess, onError);
+        function onSuccess(response) {
+            var resp = response.data || [];
+            updateInbox(resp);
+        }
+
+        function onError(err) {
+            console.log(err);
+        }
+    };
+    post.getHashtag = function () {
+        $http.get('/resthashtag').then(onSuccess, onError);
+        function onSuccess(response) {
+            var resp = response.data || [];
+            updateHashtag(resp);
+        }
+
+        function onError(err) {
+            console.log(err);
+        }
+    };
+    post.getUser();
+    post.getFollowing();
+    post.getFollower();
+    post.getInbox();
+    post.getHashtag();
     post.newPost = function () {
         var data = {
             'mensagem': post.mensagem,
@@ -224,6 +302,18 @@ app.controller('PostController', function ($http) {
             post.facebook.unshift(feed);
         });
     };
+    post.getFacebook = function () {
+        $http.get('/facebook').then(onSuccess, onError);
+        function onSuccess(response) {
+            var resp = response.data || [];
+            updateFacebook(resp);
+        }
+
+        function onError(err) {
+            console.log(err)
+        }
+    };
+    //post.getFacebook();
     /*Twitter*/
     post.tweet = function () {
         var data = {
@@ -246,6 +336,19 @@ app.controller('PostController', function ($http) {
         }
 
     };
+    post.getTweet = function () {
+        $http.get('/tweet').then(onSuccess, onError);
+        function onSuccess(response) {
+            var resp = response.data || [];
+            updateTwitter(resp);
+        }
+
+        function onError(err) {
+            console.log(err)
+        }
+
+    };
+    //post.getTweet();
     post.retweet = function (tweet) {
         var index = post.twitter.indexOf(tweet);
         var retweet = post.twitter[index];
@@ -275,8 +378,9 @@ app.controller('PostController', function ($http) {
             $http.post('/buscarusuario', data).then(onSuccess, onError);
             function onSuccess(response) {
                 var resp = response.data || [];
-                post.amigo = resp;
-                $('#perfilAmigoModal').modal({
+                console.log(resp);
+                updateEncontrados(resp);
+                $('#searchModal').modal({
                     show: 'true'
                 });
                 post.buscarusuario = '';
@@ -292,6 +396,79 @@ app.controller('PostController', function ($http) {
         $('#perfilAmigoModal').modal({
             show: 'true'
         });
+    }
+    post.followingAdd = function (follow) {
+        $http.post('/following', follow).then(onSuccess, onError);
+        function onSuccess(response) {
+            var resp = response.data || [];
+            updateFollowing(resp);
+        }
+
+        function onError(err) {
+
+        }
+
+
+    }
+    post.followingRemove = function (follow) {
+        $http.post('/following', follow).then(onSuccess, onError);
+        function onSuccess(response) {
+            var success = response.data || [];
+            var index = post.following.indexOf(follow);
+            post.following.splice(index, 1);
+        }
+
+        function onError(err) {
+            console.log(err);
+        }
+
+    }
+    post.followerAdd = function (follow) {
+        $http.post('/follower', follow).then(onSuccess, onError);
+        function onSuccess(response) {
+            var resp = response.data || [];
+            updateFollowing(resp);
+        }
+
+        function onError(err) {
+
+        }
+
+    }
+    post.followerRemove = function (follow) {
+        $http.post('/follower', follow).then(onSuccess, onError);
+        function onSuccess(response) {
+            var success = response.data || [];
+            var index = post.following.indexOf(follow);
+            post.following.splice(index, 1);
+        }
+
+        function onError(err) {
+            console.log(err);
+        }
+    }
+    post.updateConfiguracao = function () {
+        var data = {
+            'id': post.usuario.id,
+            'name': post.updatenome,
+            'image': post.updatefile,
+            'password': post.updatepassword,
+            'email': post.updateemail
+        };
+        $http.post('/update', data).then(onSuccess, onError);
+        function onSuccess(response) {
+            var resp = response.data || [];
+            console.log(resp);
+            post.usuario = {
+                'id': resp.id,
+                'nome': resp.nome,
+                'imagem': resp.imagem
+            };
+        }
+
+        function onError(err) {
+            console.log(err);
+        }
     }
 });
 

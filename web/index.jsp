@@ -41,6 +41,8 @@
     <script src="assets/proj-js/directive-proj-modal-following.js"></script>
     <script src="assets/proj-js/directive-proj-modal-followers.js"></script>
     <script src="assets/proj-js/directive-proj-modal-amigo.js"></script>
+    <script src="assets/proj-js/directive-proj-modal-config.js"></script>
+    <script src="assets/proj-js/directive-proj-modal-encontrado.js"></script>
 </head>
 <body ng-app="redeApp" ng-controller="PostController as post">
 <div class="wrapper">
@@ -114,6 +116,8 @@
     <modalfollowers></modalfollowers>
     <modalfollowing></modalfollowing>
     <modalamigo></modalamigo>
+    <modalconfig></modalconfig>
+    <modalencontrado></modalencontrado>
 </div>
 </body>
 </html>

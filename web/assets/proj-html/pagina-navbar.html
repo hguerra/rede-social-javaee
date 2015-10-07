@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a href="index.html" class="navbar-brand logo-img"></a>
+        <a href="index.jsp" class="navbar-brand logo-img"></a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
         <form class="navbar-form navbar-left">
@@ -23,7 +23,7 @@
         </form>
         <ul class="nav navbar-nav">
             <li>
-                <a href="index.html"><i class="glyphicon glyphicon-home"></i> Home</a>
+                <a href="index.jsp"><i class="glyphicon glyphicon-home"></i> Home</a>
             </li>
             <li>
                 <a href="#postModal" role="button" data-toggle="modal"><i
@@ -35,8 +35,8 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                         class="glyphicon glyphicon-user">&nbsp</i> </a> <!-- espaco &nbsp-->
                 <ul class="dropdown-menu">
-                    <li><a href=""><i class="glyphicon glyphicon-cog"></i>Perfil</a></li>
-                    <li><a href=""><i class="glyphicon glyphicon-log-out"></i>Logout</a></li>
+                    <li><a href="#configModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-cog"></i>Perfil</a></li>
+                    <li><a data-ng-click="post.logout()"><i class="glyphicon glyphicon-log-out"></i>Logout</a></li>
                 </ul>
             </li>
         </ul>

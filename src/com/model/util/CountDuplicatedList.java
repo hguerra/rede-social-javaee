@@ -1,39 +1,10 @@
-package com.main;
+package com.model.util;
 
 /**
  * Created by heitor on 05/10/15.
  */
-
 import java.util.*;
-
 public class CountDuplicatedList {
-
-    public static void main(String[] args) {
-
-        List<String> list = new ArrayList<String>();
-        list.add("b");
-        list.add("c");
-        list.add("a");
-        list.add("d");
-        list.add("b");
-        list.add("c");
-        list.add("a");
-        list.add("a");
-        list.add("a");
-
-        System.out.println("\nExample 1 - Count 'a' with frequency");
-        System.out.println("a : "+ elementFrequency("a", list));
-
-        System.out.println("\nExample 2 - Count all with frequency");
-        System.out.println(allElementFrequency(list));
-
-        System.out.println("\nExample 3 - Count all with Map");
-        printMap(allElementFrequencyMap(list));
-
-        System.out.println("\nSorted Map");
-        printMap(allElementFrequencyMapSorted(list));
-
-    }
 
     public static Map<String, Integer> allElementFrequencyMapSorted(List<String> list) {
         Map<String, Integer> map = new TreeMap<String, Integer>();

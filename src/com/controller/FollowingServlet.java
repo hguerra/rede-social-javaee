@@ -2,10 +2,9 @@ package com.controller;
 
 import com.google.gson.Gson;
 import com.model.post.Post;
+import com.model.user.PersonData;
 import com.model.user.SessionUser;
-import com.model.util.SearchWord;
 import com.model.util.WebUtil;
-import javafx.geometry.Pos;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,24 +14,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.Set;
 
 /**
- * Servlet implementation class LoginServlet
+ * Created by heitor on 06/10/15.
  */
-@WebServlet("/post")
-public class PostServlet extends HttpServlet {
+@WebServlet("/following")
+public class FollowingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String json = WebUtil.requestJson(request);
-        Post post = new Gson().fromJson(json, Post.class);
-        if (post != null) {
-            post.setTitle();
-            post.setIdUser();
-            SessionUser.getData().addPost(post);
-            SessionUser.updatePost();
-            String feed = new Gson().toJson(post);
-            SearchWord.hashtag(post.getMensagem());
-            Callback.onSuccess(response, feed);
+        PersonData p = new Gson().fromJson(json, PersonData.class);
+        if (p != null) {
+            List<PersonData> f = SessionUser.getFollowings();
+            for(PersonData i: f){
+                if(i.getId().equals(p.getId())){
+                   SessionUser.getData().removeFollowing(i.getId());
+                }
+            }
+            Callback.onSuccess(response);
         } else {
             Callback.onError(response);
             RequestDispatcher rd = getServletContext().getRequestDispatcher(

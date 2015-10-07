@@ -1,4 +1,4 @@
-package com.controller;
+package com.controller.rest;
 
 import com.model.user.UserAttributes;
 
@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by heitor on 02/10/15.
+ * Created by heitor on 06/10/15.
  */
-@WebServlet("/rest")
-public class ServletRestore extends HttpServlet {
+@WebServlet("/restfollowers")
+public class RestoreFollowersServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(UserAttributes.jsonPost());
+        response.getWriter().write(UserAttributes.jsonFollowers());
     }
 }

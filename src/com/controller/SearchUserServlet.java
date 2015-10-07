@@ -1,11 +1,13 @@
 package com.controller;
 
 import com.google.gson.Gson;
+import com.model.data.Login;
 import com.model.post.Post;
+import com.model.user.PersonData;
 import com.model.user.SessionUser;
+import com.model.user.User;
 import com.model.util.SearchWord;
 import com.model.util.WebUtil;
-import javafx.geometry.Pos;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,24 +17,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.Set;
 
 /**
- * Servlet implementation class LoginServlet
+ * Created by heitor on 07/10/15.
  */
-@WebServlet("/post")
-public class PostServlet extends HttpServlet {
+@WebServlet("/buscarusuario")
+public class SearchUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String json = WebUtil.requestJson(request);
-        Post post = new Gson().fromJson(json, Post.class);
-        if (post != null) {
-            post.setTitle();
-            post.setIdUser();
-            SessionUser.getData().addPost(post);
-            SessionUser.updatePost();
-            String feed = new Gson().toJson(post);
-            SearchWord.hashtag(post.getMensagem());
-            Callback.onSuccess(response, feed);
+        Login log = new Gson().fromJson(json, Login.class);
+        if (log != null) {
+            List<PersonData> list = SessionUser.getData().searchUserPersonData(log.getUser());
+            if (!list.isEmpty()) {
+                Callback.onSuccess(response, new Gson().toJson(list));
+            }
         } else {
             Callback.onError(response);
             RequestDispatcher rd = getServletContext().getRequestDispatcher(

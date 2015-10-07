@@ -18,33 +18,34 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
-		Cookie[] cookies = request.getCookies();
-		if (cookies != null) {
-			for (Cookie cookie : cookies) {
-				if (cookie.getName().equals("JSESSIONID")) {
-					System.out.println("JSESSIONID=" + cookie.getValue());
-					break;
-				}
-			}
-		}
-		// invalidate the session if exists
-		HttpSession session = request.getSession(false);
-		User user = (User) session.getAttribute("user");
-		System.out.println("User: " + user.getName());
-		SessionUser.destroyUserSession();
-		if (session != null) {
-			session.invalidate();
-		}
-		response.sendRedirect("login.jsp");
-	}
+    protected void doPost(HttpServletRequest request,
+                          HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("JSESSIONID")) {
+                    System.out.println("JSESSIONID=" + cookie.getValue());
+                    break;
+                }
+            }
+        }
+        // invalidate the session if exists
+        HttpSession session = request.getSession(false);
+        User user = (User) session.getAttribute("user");
+        System.out.println("User: " + user.getName());
+        SessionUser.destroyUserSession();
+        if (session != null) {
+            session.invalidate();
+        }
+        response.sendRedirect("login.jsp");
+        Callback.onSuccess(response);
+    }
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
-	}
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
 }

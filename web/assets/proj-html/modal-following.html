@@ -7,8 +7,16 @@
             </div>
             <div class="panel-body social-scroll" style="height: 650px;">
                 <div ng-repeat="following in post.following">
+                    <button data-ng-click="post.followingAdd(followers)"
+                            class="btn btn-success btn-sm button-box-inicio"  value="add"><i
+                            class="glyphicon glyphicon-ok-sign"></i>
+                    </button>
+                    <button data-ng-click="post.followingRemove(followers)"
+                            class="btn btn-danger btn-sm button-box-inicio"  value="remove"><i
+                            class="glyphicon glyphicon-remove-sign"></i>
+                    </button>
                     <a data-ng-click="post.selecionarUsuario(following)"><img ng-src="{{following.imagem}}"
-                                     class="user-img"><span style="color: red"> {{following.nome}}</span></a>
+                                                                              class="user-img"><span style="color: red"> {{following.nome}}</span></a>
                     <hr>
                 </div>
             </div>

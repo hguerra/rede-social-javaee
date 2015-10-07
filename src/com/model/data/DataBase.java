@@ -14,6 +14,7 @@ import com.model.user.PersonData;
 import com.model.user.User;
 import com.model.post.Post;
 import com.model.user.UserDAO;
+import com.model.util.CountDuplicatedList;
 import com.model.util.TransformStringMD5;
 import com.model.util.ValidInformation;
 
@@ -64,6 +65,22 @@ public class DataBase {
         }
     }
 
+    public void updateUser(String name, String newName, String accessName,
+                           String password, String email, String image) {
+        List<String> list = Arrays.asList(name, accessName, password, email);
+        if (ValidInformation.valid(list)) {
+            User user = searchUserEmail(email);
+            if (ValidInformation.valid(user) && user.getName().equals(name)) {
+                user.setName(newName);
+                user.setAccessName(accessName);
+                user.setPassword(password);
+                user.setEmail(email);
+                user.setImage(image);
+                addUser(user);
+            }
+        }
+    }
+
     public void recoverPassWord(String name, String email, String code,
                                 String newPassoword) {
         List<String> list = Arrays.asList(name, email, code);
@@ -93,6 +110,18 @@ public class DataBase {
         for (User u : queryList) {
             if (u.getName().equals(name))
                 result.add(u);
+        }
+        return result;
+    }
+
+    public List<PersonData> searchUserPersonData(String name) {
+        Query query = data.query();
+        query.constrain(User.class);
+        ObjectSet<User> queryList = query.execute();
+        List<PersonData> result = new ArrayList<>();
+        for (User u : queryList) {
+            if (u.getName().equals(name))
+                result.add(new PersonData(u.getId(), u.getName(), u.getImage()));
         }
         return result;
     }
@@ -181,7 +210,8 @@ public class DataBase {
         }
         return user;
     }
-	/* Post */
+
+    /* Post */
     public void addPost(Post post) {
         data.store(post);
         data.commit();
@@ -264,6 +294,18 @@ public class DataBase {
         data.commit();
     }
 
+    public void removeFollowing(Integer userId) {
+        Query query = data.query();
+        query.constrain(Following.class);
+        ObjectSet<Following> queryList = query.execute();
+        for (Following f : queryList) {
+            if (f.getIdUser().equals(userId)) {
+                data.delete(f);
+                data.commit();
+            }
+        }
+    }
+
     public List<PersonData> getFollowing(Integer userId) {
         Query query = data.query();
         query.constrain(Following.class);
@@ -290,6 +332,18 @@ public class DataBase {
     public void removeFollowers(Followers followers) {
         data.delete(followers);
         data.commit();
+    }
+
+    public void removeFollowers(Integer userId) {
+        Query query = data.query();
+        query.constrain(Followers.class);
+        ObjectSet<Followers> queryList = query.execute();
+        for (Followers f : queryList) {
+            if (f.getIdUser().equals(userId)) {
+                data.delete(f);
+                data.commit();
+            }
+        }
     }
 
     public List<PersonData> getFollowers(Integer userId) {
@@ -332,6 +386,29 @@ public class DataBase {
             }
         }
         return hashs;
+    }
+
+    public Map<String, Integer> getAllHashTags() {
+        Query query = data.query();
+        query.constrain(Hashtag.class);
+        ObjectSet<Hashtag> queryList = query.execute();
+        List<String> preResult = new LinkedList<>();
+        for (Hashtag h : queryList) {
+            preResult.add(h.getHashtag());
+        }
+        return CountDuplicatedList.allElementFrequencyMapSorted(preResult);
+    }
+
+    public void removeHashTag(Integer userId) {
+        Query query = data.query();
+        query.constrain(Hashtag.class);
+        ObjectSet<Hashtag> queryList = query.execute();
+        for (Hashtag f : queryList) {
+            if (f.getIdUser().equals(userId)) {
+                data.delete(f);
+                data.commit();
+            }
+        }
     }
 
     /*Test*/
