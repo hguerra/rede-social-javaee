@@ -13,10 +13,10 @@
         <form class="navbar-form navbar-left">
             <div class="input-group input-group-sm" style="max-width:360px;">
                 <input type="text" class="form-control" placeholder="Buscar" name="srch-term"
-                       id="srch-term">
+                       id="srch-term" ng-model= "post.buscarusuario">
 
                 <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><i
+                    <button data-ng-click="post.buscarUsuario()" class="btn btn-default" type="button"><i
                             class="glyphicon glyphicon-search"></i></button>
                 </div>
             </div>
@@ -38,17 +38,6 @@
                     <li><a href=""><i class="glyphicon glyphicon-cog"></i>Perfil</a></li>
                     <li><a href=""><i class="glyphicon glyphicon-log-out"></i>Logout</a></li>
                 </ul>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a><span data-ng-click="post.getDados()" class="fa fa-download"></span></a>
-            </li>
-            <li>
-                <a data-ng-click="post.setDados()"><span class="fa fa-upload"></span></a>
-            </li>
-            <li>
-                <a href="#perfilAmigoModal" role="button" data-toggle="modal"><span class="fa fa-user-plus"></span></a>
             </li>
         </ul>
     </nav>

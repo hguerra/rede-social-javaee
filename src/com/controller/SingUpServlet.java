@@ -35,11 +35,11 @@ public class SingUpServlet extends HttpServlet {
 //			Cookie userName = new Cookie("user", name);
 //			userName.setMaxAge(30 * 60);
 //			response.addCookie(userName);
-//			response.sendRedirect("index.html");
+//			response.sendRedirect("index.jsp");
 //
 //		} else {
 //			RequestDispatcher rd = getServletContext().getRequestDispatcher(
-//					"/login.html");
+//					"/login.jsp");
 //			rd.include(request, response);
 //		}
 	}

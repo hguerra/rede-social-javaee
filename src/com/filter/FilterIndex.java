@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by heitor on 06/10/15.
  */
-@WebFilter(dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD}, urlPatterns = {"/index.html"})
+@WebFilter(dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD}, urlPatterns = {"/index.jsp"})
 public class FilterIndex implements Filter {
     public void destroy() {
     }
@@ -31,7 +31,7 @@ public class FilterIndex implements Filter {
             chain.doFilter(request, response);
         } else {
             httpResponse.sendRedirect(httpRequest.getContextPath()
-                    + "/login.html");
+                    + "/login.jsp");
         }
     }
 

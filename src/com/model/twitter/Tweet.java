@@ -1,7 +1,7 @@
 package com.model.twitter;
 
 
-import com.model.util.ConfigApp;
+import com.model.util.WebUtil;
 import twitter4j.*;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
@@ -88,7 +88,7 @@ public class Tweet {
 
             try {
                 RequestToken requestToken = twitter.getOAuthRequestToken();
-                ConfigApp.openWebpage(requestToken.getAuthorizationURL());
+                WebUtil.openWebpage(requestToken.getAuthorizationURL());
                 canOpened = true;
             } catch (IllegalStateException ie) {
             }

@@ -19,7 +19,7 @@ COLUNA ESQUERDA
             <h4>O que você deseja compartilhar?</h4>
 
             <div class="form-group" style="padding:14px;">
-                <textarea class="form-control" placeholder="Atualize seu status no Facebook"></textarea>
+                <input class="form-control" placeholder="Atualize seu status no Facebook"  ng-model="post.publicarpost">
             </div>
             <!--
             url
@@ -29,7 +29,7 @@ COLUNA ESQUERDA
                     <div class="form-group" style="padding:14px;">
                         <input type="text" class="form-control input-lg" autofocus=""
                                placeholder="Digite a url da imagem" id="input-facebook-url"
-                               name="textarea-post-mensagem">
+                               name="textarea-post-mensagem" ng-model="post.publicarposturl">
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@ COLUNA ESQUERDA
             <h4>O que você deseja compartilhar?</h4>
 
             <div class="form-group" style="padding:14px;">
-                <textarea class="form-control" placeholder="Atualize seu status no Twitter"></textarea>
+                <input id = "input-tweet" class="form-control" placeholder="Atualize seu status no Twitter" ng-model="post.publicartweet">
             </div>
             <!--url-->
             <div id="url-imagem-twitter" class="collapse">
@@ -73,7 +73,7 @@ COLUNA ESQUERDA
                     <div class="form-group">
                         <input type="text" class="form-control input-lg" autofocus=""
                                placeholder="Digite a url da imagem" id="input-tweet-url"
-                               name="textarea-post-mensagem">
+                               name="textarea-post-mensagem" ng-model="post.publicartweeturl">
                     </div>
                 </div>
             </div>

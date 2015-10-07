@@ -42,7 +42,7 @@ public class WithoutCache implements Filter {
 			chain.doFilter(request, response);
 		} else {
 			httpResponse.sendRedirect(httpRequest.getContextPath()
-					+ "/login.html");
+					+ "/login.jsp");
 		}
 	}
 

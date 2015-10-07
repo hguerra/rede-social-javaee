@@ -7,7 +7,7 @@
             </div>
             <div class="panel-body social-scroll" style="height: 650px;">
                 <div ng-repeat="following in post.following">
-                    <a href="#"><img ng-src="{{following.imagem}}"
+                    <a data-ng-click="post.selecionarUsuario(following)"><img ng-src="{{following.imagem}}"
                                      class="user-img"><span style="color: red"> {{following.nome}}</span></a>
                     <hr>
                 </div>

@@ -245,6 +245,7 @@ public class DataBase {
         Post result = searchPost(title);
         if (result != null) {
             data.delete(result);
+            data.commit();
             answer = "Post deleted!";
         } else {
             answer = "Post not found!";

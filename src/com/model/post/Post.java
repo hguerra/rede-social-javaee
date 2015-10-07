@@ -17,6 +17,19 @@ public class Post {
         setTitle();
     }
 
+    public Post(String message) {
+        this.mensagem = message;
+        this.idUser = SessionUser.getUser().getId();
+        setTitle();
+    }
+
+    public Post(String message, String image) {
+        this.mensagem = message;
+        this.idUser = SessionUser.getUser().getId();
+        this.imagem = image;
+        setTitle();
+    }
+
     public Post(Integer idUser, String message, String image) {
         this.mensagem = message;
         this.idUser = idUser;
@@ -32,6 +45,18 @@ public class Post {
         stringBuffer.append(SessionUser.getUserName());
         stringBuffer.append(date);
         this.titulo = stringBuffer.toString();
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setIdUser() {
+        this.idUser = SessionUser.getUser().getId();
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public String getTitulo() {

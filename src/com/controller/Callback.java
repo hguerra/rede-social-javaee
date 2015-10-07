@@ -7,6 +7,14 @@ import java.io.IOException;
  * Created by heitor on 02/10/15.
  */
 public class Callback {
+    public static void onSuccess(HttpServletResponse response, String json) {
+        try {
+            response.getWriter().write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     public static void onSuccess(HttpServletResponse response) {
         String success = "{ \"success\": true }";
         try {

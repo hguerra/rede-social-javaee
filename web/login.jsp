@@ -1,3 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: heitor
+  Date: 06/10/15
+  Time: 17:50
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +37,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
 </head>
 
-<body  ng-app="redeApp" ng-controller="PostController as post">
+<body ng-app="redeApp" ng-controller="PostController as post">
 
 <!-- Top menu -->
 <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
@@ -41,17 +49,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">FatecBook</a>
+            <a class="navbar-brand">FatecBook</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="top-navbar-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
 							<span class="li-text">
-								Register: 
-							</span> 
+								Register:
+							</span>
 							<span class="li-social">
-								<a href="register.html"><i class="fa fa-pencil"></i></a> 
+								<a href="register.jsp"><i class="fa fa-pencil"></i></a>
 							</span>
                 </li>
             </ul>

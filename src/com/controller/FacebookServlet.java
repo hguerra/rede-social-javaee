@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.model.post.Post;
 import com.model.user.SessionUser;
 import com.model.util.WebUtil;
-import javafx.geometry.Pos;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,25 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class LoginServlet
+ * Created by heitor on 06/10/15.
  */
-@WebServlet("/post")
-public class PostServlet extends HttpServlet {
+@WebServlet("/facebook")
+public class FacebookServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String json = WebUtil.requestJson(request);
-        Post post = new Gson().fromJson(json, Post.class);
-        if (post != null) {
-            post.setTitle();
-            post.setIdUser();
-            SessionUser.getData().addPost(post);
-            SessionUser.updatePost();
-            String feed = new Gson().toJson(post);
-            Callback.onSuccess(response, feed);
-        } else {
-            Callback.onError(response);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher(
-                    "/index.jsp");
-        }
+        System.out.println(json);
+//        if (post != null) {
+//            System.out.println(SessionUser.getData().removePost(post.getTitulo()));
+//            SessionUser.updatePost();
+//            Callback.onSuccess(response);
+//        } else {
+//            Callback.onError(response);
+//            RequestDispatcher rd = getServletContext().getRequestDispatcher(
+//                    "/index.jsp");
+//        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

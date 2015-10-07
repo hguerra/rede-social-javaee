@@ -1,3 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: heitor
+  Date: 06/10/15
+  Time: 17:50
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,13 +47,13 @@
                     class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">FatecBook</a>
+            <a class="navbar-brand">FatecBook</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="top-navbar-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><span class="li-text"> Login: </span> <span
-                        class="li-social"> <a href="login.html"><i
+                        class="li-social"> <a href="login.jsp"><i
                         class="fa fa-sign-in"></i></a>
 					</span></li>
             </ul>

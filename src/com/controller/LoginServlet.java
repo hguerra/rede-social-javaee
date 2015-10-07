@@ -2,11 +2,10 @@ package com.controller;
 
 import com.google.gson.Gson;
 import com.model.data.Login;
-import com.model.user.PersonData;
 import com.model.user.SessionUser;
 import com.model.user.User;
+import com.model.util.WebUtil;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -23,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
-        String json = requestJson(request);
+        String json = WebUtil.requestJson(request);
         Login toLogin = new Gson().fromJson(json, Login.class);
         User sessionUser = SessionUser.getData().login(toLogin);
         if (sessionUser != null) {
@@ -35,24 +34,15 @@ public class LoginServlet extends HttpServlet {
             Cookie userName = new Cookie("user", toLogin.getUser());
             userName.setMaxAge(30 * 60);
             response.addCookie(userName);
-            response.sendRedirect("index.html");
-            Callback.onSuccess(response);
+            response.sendRedirect("index.jsp");
         } else {
             Callback.onError(response);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher(
+                    "/login.jsp");
+            PrintWriter out = response.getWriter();
+            out.println("<font color=white>Either user name or password is wrong.</font>");
+            rd.include(request, response);
         }
     }
 
-    public String requestJson(HttpServletRequest request) {
-        StringBuffer sb = new StringBuffer();
-        try {
-            BufferedReader reader = request.getReader();
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return sb.toString();
-    }
 }
